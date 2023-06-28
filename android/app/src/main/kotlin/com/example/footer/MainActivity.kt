@@ -1,4 +1,4 @@
-package com.example.booking_com
+package com.example.footer
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 {
-    "name": "booking_com",
-    "short_name": "booking_com",
+    "name": "footer",
+    "short_name": "footer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
