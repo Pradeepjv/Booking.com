@@ -4,6 +4,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
+import 'package:flutter/services.dart';
 // import 'package:intl/intl.dart'; // For date formatting
 
 void main() {
@@ -41,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool? isChecked = false;
   bool? isChecked1 = false;
   bool? isChecked2 = false;
+  int index = 0;
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      // ignore: sized_box_for_whitespace
+
                       const Padding(
                           padding: EdgeInsets.only(left: 140, top: 10),
                           child: Text(
@@ -69,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               decoration: TextDecoration.none,
                             ),
                           )),
+
                       const Padding(
                         padding: EdgeInsets.only(left: 540, top: 11, right: 12),
                         child: Text(
@@ -140,11 +147,25 @@ class _MyHomePageState extends State<MyHomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 0;
+                              });
+                            },
+                            // onHover: (val) {
+                            //   // ignore: avoid_print
+                            //   print(val);
+                            //   setState(() {
+                            //     isHover = val;
+                            //   });
+                            // },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 0
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(children: [
                                 Icon(
@@ -163,11 +184,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 1;
+                              });
+                            },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 1
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(
                                 children: [
@@ -186,11 +214,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 2;
+                              });
+                            },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 2
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(
                                 children: [
@@ -209,11 +244,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 3;
+                              });
+                            },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 3
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(
                                 children: [
@@ -232,11 +274,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 4;
+                              });
+                            },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 4
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(
                                 children: [
@@ -255,11 +304,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           InkWell(
+                            onTap: () {
+                              setState(() {
+                                index = 5;
+                              });
+                            },
                             child: Container(
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
+                                  border: index == 5
+                                      ? Border.all(color: Colors.white)
+                                      : Border.all(color: Colors.transparent),
                                   borderRadius: BorderRadius.circular(20)),
                               child: const Row(
                                 children: [
@@ -366,36 +422,42 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         // const Padding(padding: EdgeInsets.only(left: 140)),
-                        Expanded(
+                        // ignore: sized_box_for_whitespace
+                        Container(
+                          width: 500,
                           child: TextFormField(
                               decoration: InputDecoration(
                                   prefixIcon:
                                       const Icon(Icons.location_city_outlined),
-                                  labelText: "where are you going?",
+                                  hintText: "where are you going?",
                                   suffixIcon: const Icon(Icons.close),
                                   fillColor: Colors.black,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(2),
                                   ))),
                         ),
-                        Expanded(
+                        // ignore: sized_box_for_whitespace
+                        Container(
+                          width: 300,
                           child: TextFormField(
                               decoration: InputDecoration(
                                   prefixIcon:
                                       const Icon(Icons.date_range_outlined),
-                                  labelText: "Select date",
+                                  hintText: "Select date",
                                   suffixIcon: const Icon(Icons.close),
                                   fillColor: Colors.black,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(2),
                                   ))),
                         ),
-                        Expanded(
+                        // ignore: sized_box_for_whitespace
+                        Container(
+                          width: 300,
                           child: TextFormField(
                               decoration: InputDecoration(
                                   prefixIcon:
                                       const Icon(Icons.person_2_outlined),
-                                  labelText: "select room",
+                                  hintText: "select room",
                                   suffixIcon:
                                       const Icon(Icons.arrow_drop_down_sharp),
                                   fillColor: Colors.black,
@@ -405,7 +467,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Container(
                           width: 100,
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 51, 113, 219),
                             borderRadius: BorderRadius.circular(0),
@@ -482,6 +544,7 @@ class ImageTextCard extends StatelessWidget {
       children: [
         Column(
           children: [
+            const Padding(padding: EdgeInsets.only(left: 100)),
             SizedBox(
               width: 1200,
               height: 200,
@@ -489,6 +552,8 @@ class ImageTextCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: [
                   Container(
+                    // padding: const EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(left: 10),
                     width: 600,
                     height: 150,
                     color: Colors.white,
@@ -586,6 +651,8 @@ class ImageTextCard extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    // padding: const EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(right: 30),
                     width: 600,
                     height: 190,
                     color: Colors.white,
@@ -647,26 +714,6 @@ class ImageTextCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-
-                            // const Expanded(
-                            //   child: Padding(
-                            //     padding: EdgeInsets.all(8.0),
-                            //     child: Text(
-                            //       'Take your longest vacation yet',
-                            //       style: TextStyle(fontSize: 16),
-                            //     ),
-                            //   ),
-                            // ),
-                            // const Expanded(
-                            //   child: Padding(
-                            //     padding: EdgeInsets.all(8.0),
-                            //     child: Text(
-                            //       'Browse properties offering long-term stays, many at reduced monthly rates.',
-                            //       style: TextStyle(fontSize: 16),
-                            //     ),
-                            //   ),
-                            // ),
-                            // ignore: sized_box_for_whitespace
                             Container(
                               width: 150,
                               height: 200,
@@ -770,36 +817,6 @@ class ImageTextCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-
-                            // ignore: sized_box_for_whitespace
-
-                            // const Expanded(
-                            //   child: Padding(
-                            //     padding: EdgeInsets.all(8.0),
-                            //     child: Text(
-                            //       'Take your longest vacation yet',
-                            //       style: TextStyle(fontSize: 16),
-                            //     ),
-                            //   ),
-                            // ),
-                            // const Expanded(
-                            //   child: Padding(
-                            //     padding: EdgeInsets.all(8.0),
-                            //     child: Text(
-                            //       'Browse properties offering long-term stays, many at reduced monthly rates.',
-                            //       style: TextStyle(fontSize: 16),
-                            //     ),
-                            //   ),
-                            // ),
-                            // ignore: sized_box_for_whitespace
-                            // Container(
-                            //   width: 150,
-                            //   height: 200,
-                            //   // ignore: prefer_const_constructors
-                            //   margin: EdgeInsets.only(
-                            //       left: 40), // Adjust the width as needed
-                            //   child: Image.asset('assets/images/img2.png'),
-                            // ),
                           ],
                         ),
                       ),
@@ -810,35 +827,31 @@ class ImageTextCard extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 35,
-                  height: 35,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white),
-                  child: const Icon(Icons.arrow_back_ios, size: 25),
-                ),
-                Container(
-                    width: 35,
-                    height: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 25,
-                    ))
-              ],
-            ),
-          ],
+        Positioned(
+          top: 78,
+          left: 0,
+          child: Container(
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(color: Colors.black),
+                color: Colors.white),
+            child: const Icon(Icons.arrow_back_ios, size: 20),
+          ),
+        ),
+        Positioned(
+          top: 80,
+          right: -5,
+          child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(color: Colors.black),
+                color: Colors.white,
+              ),
+              child: const Icon(Icons.arrow_forward_ios, size: 20)),
         ),
       ],
     );
