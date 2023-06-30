@@ -1,13 +1,5 @@
-// ignore_for_file: unused_import
-
-// import 'dart:html';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-// ignore: unnecessary_import
-import 'package:flutter/services.dart';
-import 'package:booking_com/home.dart';
-// import 'package:intl/intl.dart'; // For date formatting
+import 'package:booking_com/gallery.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,17 +8,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Booking.com',
-      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 50, 1, 227)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Booking.com'),
+      home: const MyHomePage1(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
