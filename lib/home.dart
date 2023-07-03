@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:booking_com/images.dart';
-import 'package:booking_com/footer.dart';
-
-
+import 'package:grid/images.dart';
+import 'package:grid/footer.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -370,8 +368,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-          const Footer()]),
-          
+            const Footer()
+          ]),
           Positioned(
             top: 325,
             left: 130,
