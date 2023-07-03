@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:booking_com/images.dart';
+import 'package:booking_com/footer.dart';
+
 
 
 class MyHomePage extends StatefulWidget {
@@ -368,7 +370,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-          ]),
+          const Footer()]),
+          
           Positioned(
             top: 325,
             left: 130,

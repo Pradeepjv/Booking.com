@@ -112,14 +112,14 @@ class ImageTextCard extends StatelessWidget {
                               height: 200,
                               margin: const EdgeInsets.only(
                                   left: 85), // Adjust the width as needed
-                              child: Image.asset('assets/images/img1.jpeg'),
+                              child: Image.asset('assets/img1.jpeg'),
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  Container(
+                   Container(
                     // padding: const EdgeInsets.only(left: 10),
                     margin: const EdgeInsets.only(right: 30),
                     width: 600,
@@ -189,7 +189,7 @@ class ImageTextCard extends StatelessWidget {
                               // ignore: prefer_const_constructors
                               margin: EdgeInsets.only(
                                   left: 20), // Adjust the width as needed
-                              child: Image.asset('assets/images/img2.png'),
+                              child: Image.asset('assets/img2.png'),
                             ),
                           ],
                         ),
@@ -226,7 +226,7 @@ class ImageTextCard extends StatelessWidget {
                                       // margin: EdgeInsets.only(
                                       //     left: 40), // Adjust the width as needed
                                       child: Image.asset(
-                                        'assets/images/img3.jpeg',
+                                        'assets/img3.jpeg',
                                         fit: BoxFit.cover,
                                       ),
                                     ),
