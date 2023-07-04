@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grid/images.dart';
 import 'package:grid/footer.dart';
+import 'package:grid/gallery.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -368,7 +369,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            const Footer()
+            const MyGallery(),
+
+            const Footer(),
           ]),
           Positioned(
             top: 325,

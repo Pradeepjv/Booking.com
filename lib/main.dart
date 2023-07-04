@@ -1,4 +1,3 @@
-
 // ignore_for_file: unused_import
 
 // import 'dart:html';
@@ -10,26 +9,18 @@ import 'package:flutter/services.dart';
 // import 'package:booking_com/home.dart';
 import 'package:grid/home.dart';
 
-
-
 // import 'package:intl/intl.dart'; // For date formatting
-
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      
-
       title: 'Booking.com',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -38,9 +29,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Booking.com'),
-
     );
   }
 }
-
-
