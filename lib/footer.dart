@@ -11,9 +11,10 @@ class Footer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            margin: const EdgeInsets.fromLTRB(125, 0, 125, 0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(color: Colors.grey.shade300),
+              // borderRadius: BorderRadius.circular(8.0),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,9 +64,10 @@ class Footer extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           Container(
+            margin: const EdgeInsets.fromLTRB(125, 0, 125, 0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(color: Colors.grey.shade300),
+              // borderRadius: BorderRadius.circular(8.0),
             ),
             padding: const EdgeInsets.only(top: 16.0),
             child: Row(
@@ -73,9 +75,14 @@ class Footer extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
+                    width: 200,
+                    height: 250,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.rectangle,
                       color: Colors.blue,
-                      borderRadius: BorderRadius.circular(1000.0),
+                      borderRadius: BorderRadius.horizontal(
+                          left: Radius.circular(100),
+                          right: Radius.circular(100)),
                     ),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -526,7 +533,8 @@ class Footer extends StatelessWidget {
                               backgroundColor: Colors.blue[
                                   900], // Set the dark blue color as button background
                             ),
-                            child: const Text('Subscribe'),
+                            child: const Text('Subscribe',
+                                style: TextStyle(color: Colors.white)),
                           ),
                         ),
                       ],
@@ -548,7 +556,8 @@ class Footer extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromRGBO(0, 23, 134, 1),
+                              backgroundColor:
+                                  const Color.fromRGBO(0, 23, 134, 1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(1.0),
                                 side: const BorderSide(
@@ -559,7 +568,8 @@ class Footer extends StatelessWidget {
                             ),
                             child: const Text(
                               'List your property',
-                              style: TextStyle(fontSize: 12),
+                              style:
+                                  TextStyle(fontSize: 10, color: Colors.white),
                             ),
                           ),
                         ),
@@ -572,10 +582,11 @@ class Footer extends StatelessWidget {
                         Text(
                           'Mobile version',
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline),
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                            color: Colors.white,
+                          ),
                         ),
                         SizedBox(width: 20),
                         Text(
@@ -630,7 +641,7 @@ class Footer extends StatelessWidget {
             ],
           ),
           Container(
-            height: 550,
+            height: 600,
             padding: const EdgeInsets.fromLTRB(225, 30, 225, 20),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1200,6 +1211,3 @@ class Footer extends StatelessWidget {
     );
   }
 }
-
-
-
