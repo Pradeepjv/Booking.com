@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:grid/images.dart';
 import 'package:grid/footer.dart';
@@ -18,6 +20,11 @@ class _MyHomePageState extends State<MyHomePage> {
   bool? isChecked2 = false;
   int index = 0;
   bool isHover = false;
+
+  // List of items in our dropdown menu
+  List<String> items = ['Item 1', 'Item 2', 'Item 3'];
+  String? selectedItem = 'Item 1';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                     ],
                   ),
-
                   Padding(
                       padding: const EdgeInsets.only(left: 130, top: 15),
                       child: Row(
@@ -308,29 +314,49 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       )),
-                  // code for 3rd row
-                  const Padding(
-                      padding: EdgeInsets.only(left: 130, top: 100),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Find your next stay",
-                              style:
-                                  TextStyle(fontSize: 48, color: Colors.white),
-                            ),
-                          ])),
-                  const Padding(
-                      padding: EdgeInsets.only(left: 130),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Search deals on hotels, homes, and much more...",
-                              style:
-                                  TextStyle(fontSize: 24, color: Colors.white),
-                            ),
-                          ])),
+                  index == 0
+                      ?
+
+                      // code for 3rd row
+                      // ignore: prefer_const_constructors
+                      Column(
+                          children: const [
+                            Padding(
+                                padding: EdgeInsets.only(left: 130, top: 100),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Find your next stay",
+                                        style: TextStyle(
+                                            fontSize: 48, color: Colors.white),
+                                      ),
+                                    ])),
+                            Padding(
+                                padding: EdgeInsets.only(left: 130),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Search deals on hotels, homes, and much more...",
+                                        style: TextStyle(
+                                            fontSize: 24, color: Colors.white),
+                                      ),
+                                    ])),
+                          ],
+                        )
+                      : const Center(child: Text("comming soon")),
+                  // const Padding(
+                  //     padding: EdgeInsets.only(left: 130),
+                  //     child: Row(
+                  //         mainAxisAlignment: MainAxisAlignment.start,
+                  //         children: [
+                  //           Text(
+                  //             "Search deals on hotels, homes, and much more...",
+                  //             style:
+                  //                 TextStyle(fontSize: 24, color: Colors.white),
+                  //           ),
+                  //         ])),
                 ])),
 
             // this line is a code for checkbox
@@ -417,10 +443,24 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: 300,
                           child: TextFormField(
                               decoration: InputDecoration(
-                                  prefixIcon:
-                                      const Icon(Icons.date_range_outlined),
+                                  prefixIcon: IconButton(
+                                      onPressed: () async {
+                                        DateTime? datePicked =
+                                            await showDatePicker(
+                                                context: context,
+                                                initialDate: DateTime.now(),
+                                                firstDate: DateTime(2023),
+                                                lastDate: DateTime(2024));
+
+                                        if (datePicked != null) {
+                                          print(
+                                              'Date selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                                        }
+                                      },
+                                      icon: const Icon(
+                                          Icons.date_range_outlined)),
                                   hintText: "Select date",
-                                  suffixIcon: const Icon(Icons.close),
+                                  // suffixIcon: const Icon(Icons.close),
                                   fillColor: Colors.black,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(2),
@@ -434,8 +474,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                   prefixIcon:
                                       const Icon(Icons.person_2_outlined),
                                   hintText: "select room",
-                                  suffixIcon:
-                                      const Icon(Icons.arrow_drop_down_sharp),
+                                  suffixIcon: DropdownButton<String>(
+                                    value: selectedItem,
+                                    items: items.map((String items) {
+                                      return DropdownMenuItem<String>(
+                                        value: items,
+                                        child: Text(items),
+                                      );
+                                    }).toList(),
+                                    onChanged: null,
+                                  ),
                                   fillColor: Colors.black,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(2),
