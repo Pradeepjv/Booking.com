@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ImageTextCard extends StatelessWidget {
-  const ImageTextCard({super.key});
+class ImageTextCard extends StatefulWidget {
+  const ImageTextCard({Key? key}) : super(key: key);
+
+  @override
+  State<ImageTextCard> createState() => _ImageTextCardState();
+}
+
+class _ImageTextCardState extends State<ImageTextCard> {
+  int currentIndex = 0;
+
+  void handleLeftArrowClick() {
+    setState(() {
+      currentIndex = (currentIndex - 1) % 3;
+    });
+  }
+
+  void handleRightArrowClick() {
+    setState(() {
+      currentIndex = (currentIndex + 1) % 3;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +130,7 @@ class ImageTextCard extends StatelessWidget {
                               height: 200,
                               margin: const EdgeInsets.only(
                                   left: 85), // Adjust the width as needed
-                              child: Image.asset('assets/img1.jpeg'),
+                              child: Image.asset('assets/images/img1.jpeg'),
                             ),
                           ],
                         ),
@@ -188,7 +207,7 @@ class ImageTextCard extends StatelessWidget {
                               // ignore: prefer_const_constructors
                               margin: EdgeInsets.only(
                                   left: 20), // Adjust the width as needed
-                              child: Image.asset('assets/img2.png'),
+                              child: Image.asset('assets/images/img2.png'),
                             ),
                           ],
                         ),
@@ -225,7 +244,7 @@ class ImageTextCard extends StatelessWidget {
                                       // margin: EdgeInsets.only(
                                       //     left: 40), // Adjust the width as needed
                                       child: Image.asset(
-                                        'assets/img3.jpeg',
+                                        'assets/images/img3.jpeg',
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -298,28 +317,34 @@ class ImageTextCard extends StatelessWidget {
         Positioned(
           top: 78,
           left: 0,
-          child: Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(color: Colors.black),
-                color: Colors.white),
-            child: const Icon(Icons.arrow_back_ios, size: 20),
+          child: GestureDetector(
+            onTap: () => handleLeftArrowClick,
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Colors.black),
+                  color: Colors.white),
+              child: const Icon(Icons.arrow_back_ios, size: 20),
+            ),
           ),
         ),
         Positioned(
           top: 80,
           right: -5,
-          child: Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(color: Colors.black),
-                color: Colors.white,
-              ),
-              child: const Icon(Icons.arrow_forward_ios, size: 20)),
+          child: GestureDetector(
+            onTap: () => handleRightArrowClick,
+            child: Container(
+                width: 35,
+                height: 35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Colors.black),
+                  color: Colors.white,
+                ),
+                child: const Icon(Icons.arrow_forward_ios, size: 20)),
+          ),
         ),
       ],
     );

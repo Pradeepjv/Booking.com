@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Footer extends StatelessWidget {
+class Footer extends StatefulWidget {
   const Footer({Key? key}) : super(key: key);
 
+  @override
+  State<Footer> createState() => _FooterState();
+}
+
+class _FooterState extends State<Footer> {
+  int value = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -164,323 +170,1004 @@ class Footer extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 125.0),
                 child: Row(
                   children: [
-                    Flexible(
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue.shade800),
+                          borderRadius: BorderRadius.circular(20)),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            value = 0;
+                          });
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
                         ),
-                        child: const Text('Regions'),
+                        child: Text('Regions',
+                            style: TextStyle(color: Colors.blue.shade800)),
                       ),
                     ),
                     const SizedBox(width: 8.0),
-                    Flexible(
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue.shade800),
+                          borderRadius: BorderRadius.circular(20)),
                       child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: const StadiumBorder(),
-                        ),
-                        child: const Text('Cities'),
+                        onPressed: () {
+                          setState(() {
+                            value = 1;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(),
+                        child: Text('Cities',
+                            style: TextStyle(color: Colors.blue.shade800)),
                       ),
                     ),
                     const SizedBox(width: 8.0),
-                    Flexible(
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue.shade800),
+                          borderRadius: BorderRadius.circular(20)),
                       child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: const StadiumBorder(),
-                        ),
-                        child: const Text('Places of interest'),
+                        onPressed: () {
+                          setState(() {
+                            value = 2;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(),
+                        child: Text('Places of interest',
+                            style: TextStyle(color: Colors.blue.shade800)),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 16.0),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Phuket Province',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+              // const SizedBox(
+              //   height: 30,
+              //   width: double.maxFinite,
+              // ),
+              value == 0
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(50, 40, 50, 10),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Phuket Province',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3234 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Tenerife',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '4827 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Ibiza',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '2153 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Bihar',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '162 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 40),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Isle of Wight',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '896 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Hawaii',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '7419 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Guernsey',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '296 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Lake District',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '563 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                            ],
+                          ),
+                          SizedBox(width: 40),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Bora Bora',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '982 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Santorini',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3254 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Mykonos',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '2548 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Uttar Pradesh',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '457 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 40),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Bali',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '5937 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Jersey',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '432 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'England',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '8754 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Cornwall',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3167 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 40),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Zanzibar',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '1475 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Ras Al Khaimah',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '1891 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Texel',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '784 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Sydney',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '6358 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        '3234 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
+                    )
+                  : const Center(child: Text("")),
+              value == 1
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Singapore, Singapore',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '69 vacation rentals',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Dubai, United Arab Emirates',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '9,444 vacation rentals, 373 cottages, 373 cottages, 5 Glamping Sites',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'London, United Kingdom',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '8,482 vacation rentals, 716 cottages, 716 cottages, 13 cabins, 4 Glamping Sites',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Bihar',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '162 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Zanzibar',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '1475 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Paris, France',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '5,515 vacation rentals, 54 cottages, 54 cottages',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Bangkok, Thailand',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '818 vacation rentals, 51 cottages, 51 cottages',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'New Delhi, India',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '420 vacation rentals, 7 cottages, 7 cottages',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Lake District',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '563 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Ras Al Khaimah',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '1891 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'New York',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '828 Hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Newcastle upon Tyne',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '390 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Manchester',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '1088 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Liverpool',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '1080 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Texel',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '784 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Leeds',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '382 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Glasgow',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '916 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Edinburgh',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3341 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Carbis Bay',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '68 hotels',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              // Text(
+                              //   'Sydney',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '6358 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Tenerife',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    )
+                  : const Center(child: Text("")),
+              value == 2
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'The Shard',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '14,504 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'River Walk',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '670 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Portmeirion',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '9 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Disneyland Paris',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '7556 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              // Text(
+                              //   'Zanzibar',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '1475 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Times Square',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '1382 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Heathrow Terminal 2',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '7419 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Ocean City Boardwalk',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '296 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Guadalupe River Tubing',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '563 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              // Text(
+                              //   'Ras Al Khaimah',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '1891 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'State Park',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '982 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Wembley Stadium',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3254 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Heathrow Terminal 5',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '2548 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Disneyland',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '457 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              // Text(
+                              //   'Texel',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '784 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Eiffel Tower',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '5937 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Niagara Falls State Park',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '432 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Al Maha Wildlife Reserve',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '8754 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Burj Al Arab Tower',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '3167 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              // Text(
+                              //   'Sydney',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '6358 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Comal River Tubing',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '537 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Kalahari Waterpark',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '402 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'O2 Arena',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '874 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Universal Studios Orlando',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '367 properties',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              // Text(
+                              //   'Sydney',
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
+                              // Text(
+                              //   '6358 properties',
+                              //   style: TextStyle(
+                              //     color: Colors.grey,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        '4827 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Ibiza',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '2153 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Bihar',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '162 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Zanzibar',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '1475 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Isle of Wight',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '896 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Hawaii',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '7419 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Guernsey',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '296 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Lake District',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '563 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Ras Al Khaimah',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '1891 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Bora Bora',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '982 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Santorini',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '3254 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Mykonos',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '2548 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Uttar Pradesh',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '457 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Texel',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '784 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Bali',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '5937 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Jersey',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '432 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'England',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '8754 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Cornwall',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '3167 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Sydney',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '6358 properties',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    )
+                  : const Center(child: Text("")),
               const SizedBox(height: 100.0),
               Container(
                 color: const Color.fromARGB(
