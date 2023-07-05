@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class ImageTextCard extends StatelessWidget {
   const ImageTextCard({super.key});
 
@@ -49,7 +48,7 @@ class ImageTextCard extends StatelessWidget {
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
-                                        textScaleFactor: 1)),
+                                        textScaleFactor: 1.1)),
                                 const Padding(
                                     padding: EdgeInsets.only(left: 10),
                                     child: Text(
@@ -119,7 +118,7 @@ class ImageTextCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                   Container(
+                  Container(
                     // padding: const EdgeInsets.only(left: 10),
                     margin: const EdgeInsets.only(right: 30),
                     width: 600,
