@@ -1,0 +1,22 @@
+{
+"Offers" : [
+  {
+    "title": "Take your longest vacation yet",
+    "description": "Browse properties offering long-term",
+    "image":"(assets/img1.jpeg)",
+    "button": "Find a stay"
+  },
+  {
+    "title": "Fly away to your dream vacation",
+    "description": "Get inspired compare and book flights with flexibility",
+    "image":"(assets/img2.jpeg)",
+    "button": "Search for Flights"
+  },
+  {
+    "title": "The great getaway, your way",
+    "description": "Save at least 15% on stays worldwide",
+    "image":"(assets/img3.jpeg)",
+    "button": "Find gateway details"
+  }
+]
+}
