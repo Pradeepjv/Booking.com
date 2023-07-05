@@ -22,8 +22,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isHover = false;
 
   // List of items in our dropdown menu
-  List<String> items = ['Item 1', 'Item 2', 'Item 3'];
-  String? selectedItem = 'Item 1';
+  String? selectedItem;
+  final List<String> items = ['Item 1', 'Item 2', 'Item 3'];
 
   @override
   Widget build(BuildContext context) {
@@ -346,17 +346,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         )
                       : const Center(child: Text("comming soon")),
-                  // const Padding(
-                  //     padding: EdgeInsets.only(left: 130),
-                  //     child: Row(
-                  //         mainAxisAlignment: MainAxisAlignment.start,
-                  //         children: [
-                  //           Text(
-                  //             "Search deals on hotels, homes, and much more...",
-                  //             style:
-                  //                 TextStyle(fontSize: 24, color: Colors.white),
-                  //           ),
-                  //         ])),
                 ])),
 
             // this line is a code for checkbox
@@ -365,193 +354,230 @@ class _MyHomePageState extends State<MyHomePage> {
             //   child:
 
             // ),
-            Container(
-              width: double.infinity,
-              height: 500,
-              color: const Color.fromARGB(255, 253, 253, 255),
-              child: const Row(
+            if (index == 0)
+              Container(
+                width: double.infinity,
+                height: 500,
+                color: const Color.fromARGB(255, 253, 253, 255),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Padding(padding: EdgeInsets.only(left: 130)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Padding(
+                            padding: EdgeInsets.only(top: 140, bottom: 5)),
+                        const Text(
+                          "Offers",
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        const Text(
+                          "Promotions, deals, and special offers for you",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 172, 170, 170)),
+                        ),
+                        // card widget code written in separate class
+                        if (index == 0) ImageTextCard(key: UniqueKey()),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            if (index == 0) const MyGallery(),
+            if (index == 0) const Footer(),
+          ]),
+          if (index == 0)
+            Positioned(
+              top: 325,
+              left: 130,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 130)),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(padding: EdgeInsets.only(top: 140, bottom: 5)),
-                      Text(
-                        "Offers",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                  Container(
+                      width: 1210,
+                      height: 65,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          border:
+                              Border.all(color: Colors.amberAccent, width: 5),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 2,
+                                spreadRadius: 0,
+                                offset: Offset(2, 2))
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          // const Padding(padding: EdgeInsets.only(left: 140)),
+                          // ignore: sized_box_for_whitespace
+                          Container(
+                            width: 500,
+                            child: TextFormField(
+                                decoration: InputDecoration(
+                                    prefixIcon: const Icon(
+                                        Icons.location_city_outlined),
+                                    hintText: "where are you going?",
+                                    suffixIcon: const Icon(Icons.close),
+                                    fillColor: Colors.black,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(2),
+                                    ))),
+                          ),
+                          // ignore: sized_box_for_whitespace
+                          Container(
+                            width: 300,
+                            child: TextFormField(
+                                decoration: InputDecoration(
+                                    prefixIcon: IconButton(
+                                        onPressed: () async {
+                                          DateTime? datePicked =
+                                              await showDatePicker(
+                                                  context: context,
+                                                  initialDate: DateTime.now(),
+                                                  firstDate: DateTime(2023),
+                                                  lastDate: DateTime(2024));
+
+                                          if (datePicked != null) {
+                                            print(
+                                                'Date selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                                          }
+                                        },
+                                        icon: const Icon(
+                                            Icons.date_range_outlined)),
+                                    hintText: "Select date",
+                                    // suffixIcon: const Icon(Icons.close),
+                                    fillColor: Colors.black,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(2),
+                                    ))),
+                          ),
+                          // ignore: sized_box_for_whitespace
+                          Container(
+                            width: 300,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(2)),
+
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: DropdownButtonFormField<String>(
+                                decoration: const InputDecoration(
+                                    hintText: 'select Room',
+                                    prefixIcon: Icon(Icons.person),
+                                    border: InputBorder.none),
+                                value: selectedItem,
+                                items: items.map((String items) {
+                                  return DropdownMenuItem<String>(
+                                    value: items,
+                                    child: const Text("items"),
+                                  );
+                                }).toList(),
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    selectedItem = value;
+                                  });
+                                  if (selectedItem != null) {
+                                    print('Selected option: $selectedItem');
+                                  }
+                                },
+                              ),
+                            ),
+
+                            // TextFormField(
+                            //     decoration: InputDecoration(
+                            //         prefixIcon:
+                            //             const Icon(Icons.person_2_outlined),
+                            //         hintText: "select room",
+                            //         suffixIcon: DropdownButton<String>(
+                            //           value: selectedItem,
+                            //           items: items.map((String items) {
+                            //             return DropdownMenuItem<String>(
+                            //               value: items,
+                            //               child: Text(items),
+                            //             );
+                            //           }).toList(),
+                            //           onChanged: null,
+                            //         ),
+                            //         fillColor: Colors.black,
+                            //         border: OutlineInputBorder(
+                            //           borderRadius: BorderRadius.circular(2),
+                            //         ))),
+                          ),
+
+                          Container(
+                            width: 100,
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 51, 113, 219),
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                // Perform search operation
+                                // Add your search logic here
+                              },
+                              child: const Text(
+                                'Search',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      // const Padding(padding: EdgeInsets.only(left: 140)),
+                      Checkbox(
+                        value: isChecked,
+                        // tristate: true,
+                        onChanged: (newBool) {
+                          setState(() => isChecked = newBool);
+                        },
                       ),
-                      Text(
-                        "Promotions, deals, and special offers for you",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Color.fromARGB(255, 172, 170, 170)),
+                      // const SizedBox(width: 4.0),
+                      const Text(
+                        "I'm looking for an entire home or apartment",
                       ),
-                      // card widget code written in separate class
-                      ImageTextCard(),
+                      Checkbox(
+                          value: isChecked1,
+                          // tristate: true,
+                          onChanged: (newBool) {
+                            setState(() => isChecked1 = newBool);
+                          }),
+                      // const SizedBox(width: 4.0),
+                      const Text("I'm traveling for work"),
+                      Checkbox(
+                          value: isChecked2,
+                          // tristate: true,
+                          onChanged: (newBool) {
+                            setState(() => isChecked2 = newBool);
+                          }),
+                      // const SizedBox(width: 4.0),
+                      const Text("Show me flights in a new tab"),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
-            const MyGallery(),
-
-            const Footer(),
-          ]),
-          Positioned(
-            top: 325,
-            left: 130,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    width: 1210,
-                    height: 65,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        border: Border.all(color: Colors.amberAccent, width: 5),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 2,
-                              spreadRadius: 0,
-                              offset: Offset(2, 2))
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // const Padding(padding: EdgeInsets.only(left: 140)),
-                        // ignore: sized_box_for_whitespace
-                        Container(
-                          width: 500,
-                          child: TextFormField(
-                              decoration: InputDecoration(
-                                  prefixIcon:
-                                      const Icon(Icons.location_city_outlined),
-                                  hintText: "where are you going?",
-                                  suffixIcon: const Icon(Icons.close),
-                                  fillColor: Colors.black,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(2),
-                                  ))),
-                        ),
-                        // ignore: sized_box_for_whitespace
-                        Container(
-                          width: 300,
-                          child: TextFormField(
-                              decoration: InputDecoration(
-                                  prefixIcon: IconButton(
-                                      onPressed: () async {
-                                        DateTime? datePicked =
-                                            await showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime(2023),
-                                                lastDate: DateTime(2024));
-
-                                        if (datePicked != null) {
-                                          print(
-                                              'Date selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
-                                        }
-                                      },
-                                      icon: const Icon(
-                                          Icons.date_range_outlined)),
-                                  hintText: "Select date",
-                                  // suffixIcon: const Icon(Icons.close),
-                                  fillColor: Colors.black,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(2),
-                                  ))),
-                        ),
-                        // ignore: sized_box_for_whitespace
-                        Container(
-                          width: 300,
-                          child: TextFormField(
-                              decoration: InputDecoration(
-                                  prefixIcon:
-                                      const Icon(Icons.person_2_outlined),
-                                  hintText: "select room",
-                                  suffixIcon: DropdownButton<String>(
-                                    value: selectedItem,
-                                    items: items.map((String items) {
-                                      return DropdownMenuItem<String>(
-                                        value: items,
-                                        child: Text(items),
-                                      );
-                                    }).toList(),
-                                    onChanged: null,
-                                  ),
-                                  fillColor: Colors.black,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(2),
-                                  ))),
-                        ),
-                        Container(
-                          width: 100,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 51, 113, 219),
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              // Perform search operation
-                              // Add your search logic here
-                            },
-                            child: const Text(
-                              'Search',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    // const Padding(padding: EdgeInsets.only(left: 140)),
-                    Checkbox(
-                      value: isChecked,
-                      // tristate: true,
-                      onChanged: (newBool) {
-                        setState(() => isChecked = newBool);
-                      },
-                    ),
-                    // const SizedBox(width: 4.0),
-                    const Text(
-                      "I'm looking for an entire home or apartment",
-                    ),
-                    Checkbox(
-                        value: isChecked1,
-                        // tristate: true,
-                        onChanged: (newBool) {
-                          setState(() => isChecked1 = newBool);
-                        }),
-                    // const SizedBox(width: 4.0),
-                    const Text("I'm traveling for work"),
-                    Checkbox(
-                        value: isChecked2,
-                        // tristate: true,
-                        onChanged: (newBool) {
-                          setState(() => isChecked2 = newBool);
-                        }),
-                    // const SizedBox(width: 4.0),
-                    const Text("Show me flights in a new tab"),
-                  ],
-                ),
-              ],
-            ),
-          ),
         ],
-      ),
-    ));
+      )
+            
+     
+    ) 
+    );
+
   }
 }
