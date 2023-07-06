@@ -11,6 +11,7 @@ class MyGallery extends StatefulWidget {
 
 class _MyGalleryState extends State<MyGallery> {
   int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,11 +42,16 @@ class _MyGalleryState extends State<MyGallery> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 130, top: 15),
-                    child: Image.asset(
-                      'assets/images/mumbai.jpg',
-                      height: 300,
-                      width: 595,
-                      fit: BoxFit.cover,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Image.asset(
+                        'assets/images/mumbai.jpg',
+                        height: 300,
+                        width: 595,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const Positioned(
@@ -67,8 +73,13 @@ class _MyGalleryState extends State<MyGallery> {
                     left: 18,
                     top: 15,
                   ),
-                  child: Image.asset('assets/images/Manali.jpg',
-                      height: 300, width: 595, fit: BoxFit.cover),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {});
+                    },
+                    child: Image.asset('assets/images/Manali.jpg',
+                        height: 300, width: 595, fit: BoxFit.cover),
+                  ),
                 ),
                 const Positioned(
                   left: 40,
@@ -86,8 +97,13 @@ class _MyGalleryState extends State<MyGallery> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 130, top: 20),
-                    child: Image.asset('assets/images/Chennai.jpg',
-                        height: 300, width: 390, fit: BoxFit.cover),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Image.asset('assets/images/Chennai.jpg',
+                          height: 300, width: 390, fit: BoxFit.cover),
+                    ),
                   ),
                   const Positioned(
                     left: 150,
@@ -108,8 +124,13 @@ class _MyGalleryState extends State<MyGallery> {
                     left: 19,
                     top: 20,
                   ),
-                  child: Image.asset('assets/images/delhi.jpg',
-                      height: 300, width: 390, fit: BoxFit.cover),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {});
+                    },
+                    child: Image.asset('assets/images/delhi.jpg',
+                        height: 300, width: 390, fit: BoxFit.cover),
+                  ),
                 ),
                 const Positioned(
                   left: 40,
@@ -126,8 +147,16 @@ class _MyGalleryState extends State<MyGallery> {
               Stack(children: [
                 Container(
                   margin: const EdgeInsets.only(left: 19, top: 20, right: 15),
-                  child: Image.asset('assets/images/banglore.jpg',
-                      height: 300, width: 390, fit: BoxFit.cover),
+                  // decoration: BoxDecoration(
+                  //     border: Border.all(color: Colors.black),
+                  //     borderRadius: BorderRadius.circular(2)),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {});
+                    },
+                    child: Image.asset('assets/images/banglore.jpg',
+                        height: 300, width: 390, fit: BoxFit.cover),
+                  ),
                 ),
                 const Positioned(
                   left: 40,
@@ -159,7 +188,25 @@ class _MyGalleryState extends State<MyGallery> {
             future: DefaultAssetBundle.of(context)
                 .loadString("assets/json/bpt.json"),
             builder: (context, snapshot) {
-              var Mydata = json.decode(snapshot.data.toString());
+              var mydata = json.decode(snapshot.data.toString());
+              int btnIndex = 0;
+
+              // void moveLeft() {
+              //   setState(() {
+              //     if (btnIndex > 0) {
+              //       btnIndex--;
+              //     }
+              //   });
+              // }
+
+              // void moveRight() {
+              //   setState(() {
+              //     if (btnIndex < mydata["bpt"].length - 1) {
+              //       btnIndex++;
+              //     }
+              //   });
+              // }
+
               return Stack(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 130.0),
@@ -170,25 +217,26 @@ class _MyGalleryState extends State<MyGallery> {
                       scrollDirection: Axis.horizontal,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
-                                  Mydata["bpt"][0]["image"],
+                                  mydata["bpt"][btnIndex]["image"],
                                   // height: 300,
                                   width: 350,
                                 ),
                                 Text(
-                                  Mydata["bpt"][0]["title"],
+                                  mydata["bpt"][btnIndex]["title"],
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
                                 ),
                                 Text(
-                                  Mydata["bpt"][0]["description"],
+                                  mydata["bpt"][btnIndex]["description"],
                                   style: const TextStyle(
                                       fontSize: 14, color: Colors.grey),
                                 )
@@ -201,20 +249,20 @@ class _MyGalleryState extends State<MyGallery> {
                         ),
                         const SizedBox(width: 10),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              Mydata["bpt"][1]["image"],
+                              mydata["bpt"][btnIndex + 1]["image"],
                               // height: 300,
                               width: 350,
                             ),
                             Text(
-                              Mydata["bpt"][1]["title"],
+                              mydata["bpt"][btnIndex + 1]["title"],
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Text(
-                              Mydata["bpt"][1]["description"],
+                              mydata["bpt"][btnIndex + 1]["description"],
                               style: const TextStyle(
                                   fontSize: 14, color: Colors.grey),
                             )
@@ -224,20 +272,20 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              Mydata["bpt"][2]["image"],
+                              mydata["bpt"][btnIndex + 2]["image"],
                               // height: 300,
                               width: 350,
                             ),
                             Text(
-                              Mydata["bpt"][2]["title"],
+                              mydata["bpt"][btnIndex + 2]["title"],
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Text(
-                              Mydata["bpt"][2]["description"],
+                              mydata["bpt"][btnIndex + 2]["description"],
                               style: const TextStyle(
                                   fontSize: 14, color: Colors.grey),
                             )
@@ -247,23 +295,23 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              Mydata["bpt"][3]["image"],
+                              mydata["bpt"][btnIndex + 3]["image"],
                               // height: 300,
                               width: 350,
                             ),
                             Text(
-                              Mydata["bpt"][3]["title"],
+                              mydata["bpt"][btnIndex + 3]["title"],
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              Mydata["bpt"][3]["description"],
+                              mydata["bpt"][btnIndex + 3]["description"],
                               style: const TextStyle(
                                   fontSize: 14, color: Colors.grey),
                             )
@@ -273,20 +321,20 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              Mydata["bpt"][4]["image"],
+                              mydata["bpt"][btnIndex + 4]["image"],
                               // height: 300,
                               width: 350,
                             ),
                             Text(
-                              Mydata["bpt"][4]["title"],
+                              mydata["bpt"][btnIndex + 4]["title"],
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Text(
-                              Mydata["bpt"][4]["description"],
+                              mydata["bpt"][btnIndex + 4]["description"],
                               style: const TextStyle(
                                   fontSize: 14, color: Colors.grey),
                             )
@@ -296,22 +344,22 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/cottage.jpg',
+                              mydata["bpt"][btnIndex + 5]["image"],
                               // height: 300,
                               width: 350,
                             ),
-                            const Text(
-                              'Cottages',
-                              style: TextStyle(
+                            Text(
+                              mydata["bpt"][btnIndex + 5]["title"],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            const Text(
-                              '681,583 cottages',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            Text(
+                              mydata["bpt"][btnIndex + 5]["description"],
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.grey),
                             )
                           ],
                         ),
@@ -319,22 +367,22 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/glamping.jpg',
+                              mydata["bpt"][btnIndex + 6]["image"],
                               // height: 300,
                               width: 350,
                             ),
-                            const Text(
-                              'Glamping',
-                              style: TextStyle(
+                            Text(
+                              mydata["bpt"][btnIndex + 6]["title"],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            const Text(
-                              '17,569 Glamping Sites',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            Text(
+                              mydata["bpt"][btnIndex + 6]["description"],
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.grey),
                             )
                           ],
                         ),
@@ -342,22 +390,22 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/serviced_apartments.jpg',
+                              mydata["bpt"][btnIndex + 7]["image"],
                               // height: 300,
                               width: 350,
                             ),
-                            const Text(
-                              'Serviced Apartments',
-                              style: TextStyle(
+                            Text(
+                              mydata["bpt"][btnIndex + 7]["title"],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            const Text(
-                              '40,249 serviced apartments',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            Text(
+                              mydata["bpt"][btnIndex + 7]["description"],
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.grey),
                             )
                           ],
                         ),
@@ -365,22 +413,22 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/vacation_homes.jpg',
+                              mydata["bpt"][btnIndex + 8]["image"],
                               // height: 300,
                               width: 350,
                             ),
-                            const Text(
-                              'Vacation Homes',
-                              style: TextStyle(
+                            Text(
+                              mydata["bpt"][btnIndex + 8]["title"],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            const Text(
-                              '626,173 vacation homes',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            Text(
+                              mydata["bpt"][btnIndex + 8]["description"],
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.grey),
                             )
                           ],
                         ),
@@ -388,19 +436,21 @@ class _MyGalleryState extends State<MyGallery> {
                           width: 10,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/guest_houses.png',
+                              mydata["bpt"][btnIndex + 9]["image"],
                               // height: 300,
                               width: 350,
                             ),
-                            const Text(
-                              'Guest houses',
-                              style: TextStyle(
+                            Text(
+                              mydata["bpt"][btnIndex + 9]["title"],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            const Text('115,640 guest houses')
+                            Text(
+                              mydata["bpt"][btnIndex + 9]["description"],
+                            )
                           ],
                         ),
                       ],
@@ -410,33 +460,50 @@ class _MyGalleryState extends State<MyGallery> {
                 Positioned(
                   left: 110,
                   top: 100,
-                  child: Container(
-                    // width: 25,
-                    // height: 25,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        border: Border.all(color: Colors.black),
-                        color: Colors.white),
-                    child: const Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: Icon(Icons.arrow_back_ios),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (btnIndex > 0) {
+                          btnIndex -= 1; // Decrement the btnIndex value by 1
+                        }
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: Colors.black),
+                          color: Colors.white),
+                      child: const Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: Icon(Icons.arrow_back_ios),
+                      ),
                     ),
                   ),
                 ),
                 Positioned(
                   right: -10,
                   top: 100,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        border: Border.all(color: Colors.black),
-                        color: Colors.white,
-                      ),
-                      child: const Icon(Icons.arrow_forward_ios)),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (btnIndex < mydata["bpt"].length - 1) {
+                          btnIndex += 1; // Increment the btnIndex value by 1
+                        }
+                      });
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: Colors.black),
+                          color: Colors.white,
+                        ),
+                        child: const Icon(Icons.arrow_forward_ios)),
+                  ),
                 )
               ]);
             },
           ),
+
           Container(
             margin: const EdgeInsets.only(left: 130, top: 15),
             child: const Text(
@@ -454,6 +521,7 @@ class _MyGalleryState extends State<MyGallery> {
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ),
+
           Stack(children: [
             Padding(
               padding: const EdgeInsets.only(left: 130.0),
@@ -464,15 +532,12 @@ class _MyGalleryState extends State<MyGallery> {
                   scrollDirection: Axis.horizontal,
                   children: [
                     Column(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/goa.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/goa.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Goa',
@@ -485,17 +550,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/delhi1.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/delhi1.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'New Delhi',
@@ -508,17 +573,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/rishikesh.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/rishikesh.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Rishīkesh',
@@ -531,17 +596,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/mumbai.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/mumbai.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Mumbai',
@@ -554,17 +619,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/lonavala.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/lonavala.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Lonavala',
@@ -577,17 +642,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/banglore.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/banglore.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Bangalore',
@@ -600,17 +665,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Manali.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/Manali.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Manāli',
@@ -623,17 +688,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/north_goa.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/north_goa.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'North Goa',
@@ -646,17 +711,17 @@ class _MyGalleryState extends State<MyGallery> {
                         )
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Ooty.jpg',
-                            // height: 300,
-                            width: 200,
-                          ),
+                        Image.asset(
+                          'assets/images/Ooty.jpg',
+                          // height: 300,
+                          width: 200,
                         ),
                         const Text(
                           'Ooty',
@@ -676,29 +741,39 @@ class _MyGalleryState extends State<MyGallery> {
             Positioned(
               left: 110,
               top: 65,
-              child: Container(
-                // width: 25,
-                // height: 25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white),
-                child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Icon(Icons.arrow_back_ios),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                  // width: 25,
+                  // height: 25,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white),
+                  child: const Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
                 ),
               ),
             ),
             Positioned(
               right: -10,
               top: 65,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white,
-                  ),
-                  child: const Icon(Icons.arrow_forward_ios)),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios)),
+              ),
             )
           ]),
 
@@ -869,6 +944,9 @@ class _MyGalleryState extends State<MyGallery> {
               ],
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           count == 0
               ?
               // images for above
@@ -879,19 +957,15 @@ class _MyGalleryState extends State<MyGallery> {
                       width: 1200,
                       height: 205,
                       child: ListView(
-                        // shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
                           Column(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/Yercaud.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/Yercaud.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Yercaud',
@@ -905,17 +979,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kumarakom.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/kumarakom.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Kumarakom',
@@ -929,17 +1002,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/panchangi.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/panchangi.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Panchgani',
@@ -953,17 +1025,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/lavasa.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/lavasa.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Lavasa',
@@ -977,17 +1048,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/saputara.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/saputara.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Saputara',
@@ -1001,17 +1071,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kalimpong.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/kalimpong.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Kalimpong',
@@ -1025,17 +1094,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/pelling.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/pelling.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Pelling',
@@ -1049,17 +1117,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kasauli.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/kasauli.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Kasauli',
@@ -1073,17 +1140,16 @@ class _MyGalleryState extends State<MyGallery> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/chail.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
+                              Image.asset(
+                                'assets/images/chail.jpg',
+                                // height: 300,
+                                width: 200,
                               ),
                               const Text(
                                 'Chail',
@@ -1104,29 +1170,39 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
@@ -1139,7 +1215,6 @@ class _MyGalleryState extends State<MyGallery> {
                       width: 1200,
                       height: 205,
                       child: ListView(
-                        // shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
                           Column(
@@ -1346,29 +1421,39 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
@@ -1381,7 +1466,6 @@ class _MyGalleryState extends State<MyGallery> {
                       width: 1200,
                       height: 205,
                       child: ListView(
-                        // shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
                           Column(
@@ -1606,29 +1690,39 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
@@ -1641,7 +1735,6 @@ class _MyGalleryState extends State<MyGallery> {
                       width: 1200,
                       height: 205,
                       child: ListView(
-                        // shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
                           Column(
@@ -1866,29 +1959,36 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
@@ -1900,7 +2000,6 @@ class _MyGalleryState extends State<MyGallery> {
                       width: 1200,
                       height: 205,
                       child: ListView(
-                        // shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: [
                           Column(
@@ -2125,29 +2224,39 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
@@ -2384,35 +2493,45 @@ class _MyGalleryState extends State<MyGallery> {
                   Positioned(
                     left: 110,
                     top: 65,
-                    child: Container(
-                      // width: 25,
-                      // height: 25,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        // width: 25,
+                        // height: 25,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(Icons.arrow_back_ios),
+                        ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: -10,
                     top: 65,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios)),
+                    ),
                   )
                 ])
               : const Center(),
 
           Container(
-            margin: const EdgeInsets.only(left: 100, top: 15),
+            margin: const EdgeInsets.only(left: 130, top: 15),
             child: const Text(
               'Stay at our top unique properties',
               style: TextStyle(
@@ -2423,7 +2542,7 @@ class _MyGalleryState extends State<MyGallery> {
           ),
 
           Container(
-            margin: const EdgeInsets.only(left: 100),
+            margin: const EdgeInsets.only(left: 130),
             child: const Text(
               'From castles and villas to boats and igloos, we have it all',
               style: TextStyle(fontSize: 16, color: Colors.grey),
@@ -2609,34 +2728,44 @@ class _MyGalleryState extends State<MyGallery> {
             Positioned(
               left: 110,
               top: 100,
-              child: Container(
-                // width: 25,
-                // height: 25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white),
-                child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Icon(Icons.arrow_back_ios),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                  // width: 25,
+                  // height: 25,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white),
+                  child: const Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
                 ),
               ),
             ),
             Positioned(
               right: -10,
               top: 100,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white,
-                  ),
-                  child: const Icon(Icons.arrow_forward_ios)),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios)),
+              ),
             )
           ]),
 
           Container(
-            margin: const EdgeInsets.only(left: 100, top: 15),
+            margin: const EdgeInsets.only(left: 130, top: 15),
             child: const Text(
               'Get inspiration for your next trip',
               style: TextStyle(
@@ -2813,33 +2942,43 @@ class _MyGalleryState extends State<MyGallery> {
             Positioned(
               left: 110,
               top: 150,
-              child: Container(
-                // width: 25,
-                // height: 25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white),
-                child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Icon(Icons.arrow_back_ios),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                  // width: 25,
+                  // height: 25,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white),
+                  child: const Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
                 ),
               ),
             ),
             Positioned(
               right: -10,
               top: 150,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white,
-                  ),
-                  child: const Icon(Icons.arrow_forward_ios)),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios)),
+              ),
             )
           ]),
           Container(
-            margin: const EdgeInsets.only(left: 100, top: 15),
+            margin: const EdgeInsets.only(left: 130, top: 15),
             child: const Text(
               'Homes guests love',
               style: TextStyle(
@@ -3143,29 +3282,39 @@ class _MyGalleryState extends State<MyGallery> {
             Positioned(
               left: 110,
               top: 100,
-              child: Container(
-                // width: 25,
-                // height: 25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white),
-                child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Icon(Icons.arrow_back_ios),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                  // width: 25,
+                  // height: 25,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white),
+                  child: const Padding(
+                    padding: EdgeInsets.all(2.0),
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
                 ),
               ),
             ),
             Positioned(
               right: -10,
               top: 100,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white,
-                  ),
-                  child: const Icon(Icons.arrow_forward_ios)),
+              child: InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios)),
+              ),
             )
           ]),
         ],

@@ -3,52 +3,52 @@
         {
             "index":0,
             "image":"assets/images/hotel.jpg",
-            "title":"Motels",
+            "title":"Hotels",
             "description":"982,075 hotels"
         },
         {
             "index":1,
-            "image":"assets/images/apartment.png",
+            "image":"assets/images/appartment.png",
             "title":"Apartments",
             "description":"982,075 hotels"
         },{
             "index":2,
-            "image":"assets/images/hotel.jpg",
+            "image":"assets/images/resorts.jpg",
             "title":"Resorts",
             "description":"19,231 resorts"
         },{
             "index":3,
-            "image":"assets/images/hotel.jpg",
+            "image":"assets/images/villas.jpg",
             "title":"Villas",
             "description":"632,227 villas"
         },{
             "index":4,
-            "image":"assets/images/hotel.jpg",
+            "image":"assets/images/cabins.jpg",
             "title":"Cabins",
             "description":"44,853 cabins"
         },{
             "index":5,
-            "image":"hotel.jpg",
+            "image":"assets/images/cottage.jpg",
             "title":"Cottages",
             "description":"688,042 cottages"
         },{
             "index":6,
-            "image":"hotel.jpg",
+            "image":"assets/images/glamping.jpg",
             "title":"Glamping",
             "description":"17,873 Glamping Sites"
         },{
             "index":7,
-            "image":"hotel.jpg",
+            "image":"assets/images/serviced_apartments.jpg",
             "title":"Serviced Apartments",
             "description":"40,454 serviced apartments"
         },{
             "index":8,
-            "image":"hotel.jpg",
+            "image":"assets/images/cabins.jpg",
             "title":"Vacation Homes",
             "description":"632,227 vacation homes"
         },{
             "index":9,
-            "image":"hotel.jpg",
+            "image":"assets/images/hotel.jpg",
             "title":"Guest houses",
             "description":"116,352 guest houses"
         }
