@@ -227,9 +227,9 @@ class _FooterState extends State<Footer> {
               //   width: double.maxFinite,
               // ),
               value == 0
-                  ? Padding(
-                      padding: const EdgeInsets.fromLTRB(50, 40, 50, 10),
-                      child: const Row(
+                  ? const Padding(
+                      padding: EdgeInsets.fromLTRB(50, 40, 50, 10),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
@@ -522,9 +522,9 @@ class _FooterState extends State<Footer> {
                     )
                   : const Center(child: Text("")),
               value == 1
-                  ? Padding(
-                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                      child: const Row(
+                  ? const Padding(
+                      padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
@@ -811,9 +811,9 @@ class _FooterState extends State<Footer> {
                     )
                   : const Center(child: Text("")),
               value == 2
-                  ? Padding(
-                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                      child: const Row(
+                  ? const Padding(
+                      padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
