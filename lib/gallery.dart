@@ -207,6 +207,9 @@ class _MyGalleryState extends State<MyGallery> {
               //   });
               // }
 
+
+              
+
               return Stack(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 130.0),
