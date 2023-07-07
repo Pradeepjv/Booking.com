@@ -1,0 +1,85 @@
+{
+    "destinations": [
+      {
+        "name": "Phuket Province",
+        "properties": 3234
+      },
+      {
+        "name": "Tenerife",
+        "properties": 4827
+      },
+      {
+        "name": "Ibiza",
+        "properties": 2153
+      },
+      {
+        "name": "Bihar",
+        "properties": 162
+      },
+      {
+        "name": "Isle of Wight",
+        "properties": 896
+      },
+      {
+        "name": "Hawaii",
+        "properties": 7419
+      },
+      {
+        "name": "Guernsey",
+        "properties": 296
+      },
+      {
+        "name": "Lake District",
+        "properties": 563
+      },
+      {
+        "name": "Bora Bora",
+        "properties": 982
+      },
+      {
+        "name": "Santorini",
+        "properties": 3254
+      },
+      {
+        "name": "Mykonos",
+        "properties": 2548
+      },
+      {
+        "name": "Uttar Pradesh",
+        "properties": 457
+      },
+      {
+        "name": "Bali",
+        "properties": 5937
+      },
+      {
+        "name": "Jersey",
+        "properties": 432
+      },
+      {
+        "name": "England",
+        "properties": 8754
+      },
+      {
+        "name": "Cornwall",
+        "properties": 3167
+      },
+      {
+        "name": "Zanzibar",
+        "properties": 1475
+      },
+      {
+        "name": "Ras Al Khaimah",
+        "properties": 1891
+      },
+      {
+        "name": "Texel",
+        "properties": 784
+      },
+      {
+        "name": "Sydney",
+        "properties": 6358
+      }
+    ]
+  }
+  
