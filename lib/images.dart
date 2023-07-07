@@ -10,6 +10,17 @@ class ImageTextCard extends StatefulWidget {
 
 class _ImageTextCardState extends State<ImageTextCard> {
   int currentIndex = 0;
+  late Future<String> jsonData;
+
+  @override
+  void initState() {
+    super.initState();
+    jsonData = DefaultAssetBundle.of(context)
+        .loadString("assets/json/object.json")
+        .then((String value) {
+      return value;
+    });
+  }
 
   void handleLeftArrowClick() {
     setState(() {
@@ -25,23 +36,23 @@ class _ImageTextCardState extends State<ImageTextCard> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // ignore: avoid_unnecessary_containers, sized_box_for_whitespace
-
-        FutureBuilder<String>(
-            future: DefaultAssetBundle.of(context)
-                .loadString("assets/json/object.json"),
-            builder: (context, snapshot) {
-              var data = json.decode(snapshot.data.toString());
-              return Stack(
+    return FutureBuilder<String>(
+      future: jsonData,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          var data = json.decode(snapshot.data.toString());
+          return Stack(
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      const Padding(padding: EdgeInsets.only(left: 100)),
-                      SizedBox(
-                        width: 1200,
-                        height: 200,
-                        child: ListView(
+                  const Padding(padding: EdgeInsets.only(left: 100)),
+                  SizedBox(
+                    width: 1170,
+                    height: 200,
+                    child: PageView.builder(
+                      itemCount: 1,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
                             Container(
@@ -325,44 +336,56 @@ class _ImageTextCardState extends State<ImageTextCard> {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 78,
-                    left: 0,
-                    child: GestureDetector(
-                      onTap: () => handleLeftArrowClick,
-                      child: Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Icon(Icons.arrow_back_ios, size: 20),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 80,
-                    right: -5,
-                    child: GestureDetector(
-                      onTap: () => handleRightArrowClick,
-                      child: Container(
-                          width: 35,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios, size: 20)),
+                        );
+                      },
                     ),
                   ),
                 ],
-              );
-            });
+              ),
+              Positioned(
+                top: 78,
+                left: 0,
+                child: GestureDetector(
+                  onTap: () => handleLeftArrowClick,
+                  child: Container(
+                    width: 35,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_back_ios, size: 20),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 80,
+                right: 0,
+                child: GestureDetector(
+                  onTap: () => handleRightArrowClick,
+                  child: Container(
+                    width: 35,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
+                ),
+              ),
+            ],
+          );
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return const CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+          );
+        }
+      },
+    );
   }
 }
