@@ -550,7 +550,14 @@ class _FooterState extends State<Footer> {
                                 ),
                               ),
                               Text(
-                                '9,444 vacation rentals, 373 cottages, 373 cottages, 5 Glamping Sites',
+                                '9,444 vacation rentals, 373 cottages,',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              Text(
+                                '373 cottages,5 Glamping Sites',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -563,7 +570,14 @@ class _FooterState extends State<Footer> {
                                 ),
                               ),
                               Text(
-                                '8,482 vacation rentals, 716 cottages, 716 cottages, 13 cabins, 4 Glamping Sites',
+                                '8,482 vacation rentals, 716 cottages,',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              Text(
+                                '716 cottages, 13 cabins, 4 Glamping Sites,',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -607,7 +621,14 @@ class _FooterState extends State<Footer> {
                                 ),
                               ),
                               Text(
-                                '5,515 vacation rentals, 54 cottages, 54 cottages',
+                                '5,515 vacation rentals, 54 cottages,',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              // SizedBox(height: 10),
+                              Text(
+                                '54 cottages,',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -620,7 +641,13 @@ class _FooterState extends State<Footer> {
                                 ),
                               ),
                               Text(
-                                '818 vacation rentals, 51 cottages, 51 cottages',
+                                '818 vacation rentals, 51 cottages,',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                '51 cottages,',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -633,7 +660,13 @@ class _FooterState extends State<Footer> {
                                 ),
                               ),
                               Text(
-                                '420 vacation rentals, 7 cottages, 7 cottages',
+                                '420 vacation rentals, 7 cottages,',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                '7 cottages',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -1095,6 +1128,7 @@ class _FooterState extends State<Footer> {
                               // ),
                             ],
                           ),
+                          SizedBox(width: 20),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
