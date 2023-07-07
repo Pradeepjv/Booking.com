@@ -20,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool? isChecked2 = false;
   int index = 0;
   bool isHover = false;
+  DateTime? selectedDate;
 
   int counter = 0;
   int counter1 = 0;
@@ -366,7 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Padding(padding: EdgeInsets.only(left: 120)),
+                  const Padding(padding: EdgeInsets.only(left: 130)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -477,29 +478,36 @@ class _MyHomePageState extends State<MyHomePage> {
                         Container(
                           width: 320,
                           child: TextFormField(
-                              decoration: InputDecoration(
-                                  prefixIcon: IconButton(
-                                      onPressed: () async {
-                                        DateTime? datePicked =
-                                            await showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime(2023),
-                                                lastDate: DateTime(2024));
+                            readOnly: true,
+                            decoration: InputDecoration(
+                                prefixIcon: IconButton(
+                                    onPressed: () async {
+                                      DateTime? datePicked =
+                                          await showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(2023),
+                                              lastDate: DateTime(2034));
 
-                                        if (datePicked != null) {
-                                          print(
-                                              'Date selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
-                                        }
-                                      },
-                                      icon: const Icon(
-                                          Icons.date_range_outlined)),
-                                  hintText: "Select date",
-                                  // suffixIcon: const Icon(Icons.close),
-                                  fillColor: Colors.black,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(2),
-                                  ))),
+                                      if (datePicked != null) {
+                                        print(
+                                            'Date selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                                      }
+                                    },
+                                    icon:
+                                        const Icon(Icons.date_range_outlined)),
+                                hintText: "Select date",
+                                // suffixIcon: const Icon(Icons.close),
+                                fillColor: Colors.black,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(2),
+                                )),
+                            controller: TextEditingController(
+                              text: selectedDate != null
+                                  ? "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}"
+                                  : null,
+                            ),
+                          ),
                         ),
                         // ignore: sized_box_for_whitespace
                         StatefulBuilder(
