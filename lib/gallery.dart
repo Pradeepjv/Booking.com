@@ -159,7 +159,32 @@ class _MyGalleryState extends State<MyGallery> {
             future: DefaultAssetBundle.of(context)
                 .loadString("assets/json/bpt.json"),
             builder: (context, snapshot) {
-              var myData = json.decode(snapshot.data.toString());
+
+              var mydata = json.decode(snapshot.data.toString());
+              int btnIndex = 0;
+
+              // void moveLeft() {
+              //   setState(() {
+              //     if (btnIndex > 0) {
+              //       btnIndex--;
+              //     }
+              //   });
+              // }
+
+              // void moveRight() {
+              //   setState(() {
+              //     if (btnIndex < mydata["bpt"].length - 1) {
+              //       btnIndex++;
+              //     }
+              //   });
+              // }
+
+
+              
+
+
+             
+
               return Stack(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 130.0),
