@@ -1,0 +1,126 @@
+{
+    "topProperties":[
+        {
+            "index":0,
+            "image":"assets/images/La Roulotte de Ciney.jpg",
+            "title":"La Roulotte de Ciney",
+            "description":"Belgium, Ciney",
+            "id":"8.4",
+            "rating":"very good",
+            "review":". 92 reviews"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Domki Wierszyki Shelters.jpg",
+            "title":"Domki Wierszyki Shelters",
+            "description":"Poland, Zakopane",
+            "id":"9.7",    
+            "rating":"Exceptional",
+            "review":"· 88 reviews"
+        },{
+            "index":2,
+            "image":"assets/images/Ranczo w Dolinie.jpg",
+            "title":"Ranczo w Dolinie",
+            "description":"Poland, Kiszkowo",
+            "id":"9.5",
+            "rating":"Exceptional",
+            "review":"· 232 reviews"
+        },{
+            "index":3,
+            "image":"assets/images/Tiny House Dreischwesternherz.jpg",
+            "title":"Tiny House Dreischwesternherz",
+            "description":"Germany, Trier",
+            "id":"9.6",   
+            "rating":"Exceptional",
+            "review":"· 145 reviews"
+        },{
+            "index":4,
+            "image":"assets/images/Das rote Haus hinterm Deich.webp",
+            "title":"Das rote Haus hinterm Deich",
+            "description":"Germany, Simonsberg",
+            "id":"9.3",
+            "rating":"Wonderful ",
+            "review":"· 50 reviews"
+        },{
+            "index":5,
+            "image":"assets/images/Agriturismo Cabrele.webp",
+            "title":"Agriturismo Cabrele",
+            "description":"Italy, Santorso",
+            "id":"9.3",
+            "rating":"Wonderful",
+            "review":"· 234 reviews"
+        },{
+            "index":6,
+            "image":"assets/images/Mini Hotel Übernachten Im Gurkenfass.webp",
+            "title":"Mini Hotel Übernachten Im Gurkenfass",
+            "description":"Germany, Lübbenau",
+            "id":"7.9",
+            "rating":"Good",
+            "review":"· 124 reviews"
+        },{
+            "index":7 ,
+            "image":"assets/images/Carinya Park.webp",
+            "title":"Carinya Park",
+            "description":"Australia, Gembrook",
+            "id":"9.3",
+            "rating":"Wonderful",
+            "review":"· 32 reviews"
+        },{
+            "index":8,
+            "image":"assets/images/Gyttja Västergårds.webp",
+            "title":"Gyttja Västergårds",
+            "description":"Finland, Lillandet",
+            "id":"9.3",
+            "rating":"Wonderful",
+            "review":"· 293 reviews"
+        },{
+            "index":9,
+            "image":"assets/images/Au Cœur des Lacs - Chambres d'hôtes.webp",
+            "title":"Au Cœur des Lacs - Chambres d'hôtes",
+            "description":"France, Gérardmer",
+            "id":"9.4",
+            "rating":"Wonderful",
+            "review":" · 313 reviews"
+        },{
+            "index":10,
+            "image":"assets/images/La Sapinette.webp",
+            "title":"La Sapinette",
+            "description":"Canada, Val-David",
+            "id":"8.6",
+            "rating":"Excellent",
+            "review":"· 55 reviews"
+        },{
+            "index":11,
+            "image":"assets/images/MFC Erfurter Seen.webp",
+            "title":"MFC Erfurter Seen",
+            "description":"Germany, Erfurt",
+            "id":"8.2",
+            "rating":"Very Good",
+            "review":"· 155 reviews"
+        },{
+            "index":12,
+            "image":"assets/images/Finca Esperanza.webp",
+            "title":"Finca Esperanza",
+            "description":"Spain, Yaiza",
+            "id":"9.0",
+            "rating":"Wonderful",
+            "review":"· 131 reviews"
+        },{
+            "index":13,
+            "image":"assets/images/Auberge La Seigneurie Valcartier.webp",
+            "title":"Auberge La Seigneurie Valcartier",
+            "description":"Canada, Saint-Gabriel-de-Valcartier",
+            "id":"8.2",
+            "rating":"Very Good",
+            "review":"· 168 reviews"
+        },{
+            "index":14,
+            "image":"assets/images/Lofthus Camping.webp",
+            "title":"Lofthus Camping",
+            "description":"Norway, Lofthus",
+            "id":"9.3",
+            "rating":"Wonderful",
+            "review":"· 326 reviews"
+        }
+    ]
+}

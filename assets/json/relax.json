@@ -1,0 +1,53 @@
+{
+    "relax":[
+        {
+            "index":0,
+            "image":"assets/images/Yercaud.jpg",
+            "title":"Yercaud",
+            "description":"147 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/kumarakom.jpg",
+            "title":"Kumarakom",
+            "description":"397 km away"
+        },{
+            "index":2,
+            "image":"assets/images/panchangi.jpg",
+            "title":"Panchangi",
+            "description":"682 km away"
+        },{
+            "index":3,
+            "image":"assets/images/lavasa.jpg",
+            "title":"Lavasa",
+            "description":"745 km away"
+        },{
+            "index":4,
+            "image":"assets/images/saputara.jpg",
+            "title":"Saputara",
+            "description":"939 km away"
+        },{
+            "index":5,
+            "image":"assets/images/kalimpong.jpg",
+            "title":"Kalimpong",
+            "description":"1,933 km away"
+        },{
+            "index":6,
+            "image":"assets/images/pelling.jpg",
+            "title":"Pelling",
+            "description":"1,939 km away"
+        },{
+            "index":7,
+            "image":"assets/images/kasauli.jpg",
+            "title":"Kasauli",
+            "description":"1,993 km away"
+        },{
+            "index":8,
+            "image":"assets/images/chail.jpg",
+            "title":"Chail",
+            "description":"2,001 km away"
+        }
+        
+
+    ]
+}

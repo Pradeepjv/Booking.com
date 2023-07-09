@@ -1,0 +1,106 @@
+{
+    "homesGuest":[
+        {
+            "index":0,
+            "image":"assets/images/Aparthotel Stare Miasto.webp",
+            "title":"Aparthotel Stare Miasto",
+            "description":"Old Town, Poland, Kraków",
+            "text":"Starting from  ",
+            "amount":"₹ 8,421",
+            "id":"8.7 ",
+            "rating":" Excellent ",
+            "review":" · 2,393 reviews"
+        },
+        {
+            "index":1,
+            "image":"assets/images/7Seasons Apartments Budapest.webp",
+            "title":"7Seasons Apartments Budapest",
+            "description":"06. Terézváros, Hungary, Budapest",
+            "text":"Starting from  ",
+            "amount":"₹ 9,393",
+            "id":"8.8 ", 
+            "rating":" Excellent ",
+            "review":" · 8,347 reviews"
+        },{
+            "index":2,
+            "image":"assets/images/Oriente Palace Apartments.webp",
+            "title":"Oriente Palace Apartments",
+            "description":"Madrid City Center, Spain, Madrid",
+            "text":"Starting from  ",
+            "amount":"₹ 6,943",
+            "id":"8.9 ",
+            "rating":" Excellent ",
+            "review":" · 2,881 reviews"
+        },{
+            "index":3,
+            "image":"assets/images/Cheval Three Quays at The Tower of London.webp",
+            "title":"Cheval Three Quays at The Tower of London",
+            "description":"City of London, United Kingdom, London",
+            "text":"Starting from  ",
+            "amount":"₹ 53,209",
+            "id":"9.4 ",
+            "rating":" Wonderful ",
+            "review":" · 601 reviews"
+        },{
+            "index":4,
+            "image":"assets/images/P&J Luxury Apartments.webp",
+            "title":"P&J Luxury Apartments",
+            "description":"Old Town, Poland, Kraków",
+            "text":"Starting from  ",
+            "amount":"₹ 9,242",
+            "id":"8.1 ",
+            "rating":" Very Good ",
+            "review":" · 8,347 reviews"
+        },{
+            "index":5 ,
+            "image":"assets/images/Michalská 2 - Old Town Apartment.webp",
+            "title":"Michalská 2 - Old Town Apartment",
+            "description":"Prague 1, Czech Republic, Prague",
+            "text":"Starting from  ",
+            "amount":"₹ 57,176",
+            "id":"8.6 ",
+            "rating":" Excellent ",
+            "review":" · 76 reviews"
+        },{
+            "index":6,
+            "image":"assets/images/6 Continents Apartments by Prague Residences.webp",
+            "title":" 6 Continents Apartments by Prague Residences",
+            "description":" Prague 1, Czech Republic, Prague",
+            "text":"Starting from  ",
+            "amount":"₹ 13,861",
+            "id":"8.4 ",
+            "rating":" Very Good ",
+            "review":" · 302 reviews"
+        },{
+            "index":7,
+            "image":"assets/images/The Apartments by The Sloane Club.webp",
+            "title":"The Apartments by The Sloane Club",
+            "description":"Kensington and Chelsea, United Kingdom, London",
+            "text":"Starting from  ",
+            "amount":"₹ 53,553",
+            "id":"9.0 ",
+            "rating":" Wonderful ",
+            "review":" · 154 reviews"
+        },{
+            "index":8,
+            "image":"assets/images/Flora Chiado Apartments.webp",
+            "title":"Flora Chiado Apartments",
+            "description":"Santa Maria Maior, Portugal, Lisboa",
+            "text":"Starting from  ",
+            "amount":"₹ 55,897",
+            "id":"9.7 ",
+            "rating":" Exceptional ",
+            "review":" · 176 reviews"
+        },{
+            "index":9,
+            "image":"assets/images/3 Epoques Apartments by Prague Residences.webp",
+            "title":"3 Epoques Apartments by Prague Residences",
+            "description":"Prague 1, Czech Republic, Praha 1",
+            "text":"Starting from  ",
+            "amount":"₹ 12,321",
+            "id":"8.7 ",
+            "rating":" Excellent ",
+            "review":" · 451 reviews"
+        }
+    ]
+}

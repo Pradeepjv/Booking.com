@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyGallery extends StatefulWidget {
   const MyGallery({Key? key}) : super(key: key);
@@ -11,6 +11,144 @@ class MyGallery extends StatefulWidget {
 
 class _MyGalleryState extends State<MyGallery> {
   int count = 0;
+  int btnIndex = 0;
+
+  List _bptItems = [];
+  List _exploreIndiaItems = [];
+  List _relaxItems = [];
+  List _cityItems = [];
+  List _outdoorItems = [];
+  List _romanceItems = [];
+  List _foodItems = [];
+  List _beachItems = [];
+  List _topPropertiesItems = [];
+  List _homesGuestItems = [];
+
+  Future<void> bptLoadData() async {
+    final String response = await rootBundle.loadString("assets/json/bpt.json");
+
+    final data = await json.decode(response);
+    setState(() {
+      _bptItems = data["bpt"];
+      // ignore: avoid_print
+      print("number of items ${_bptItems.length}");
+    });
+  }
+
+  Future<void> exploreIndiaLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/explore_india.json");
+    final data = await json.decode(response);
+    setState(() {
+      _exploreIndiaItems = data["exploreIndia"];
+      // ignore: avoid_print
+      print("number of items ${_exploreIndiaItems.length}");
+    });
+  }
+
+  Future<void> relaxLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/relax.json");
+    final data = await json.decode(response);
+    setState(() {
+      _relaxItems = data["relax"];
+      // ignore: avoid_print
+      print("number of items ${_relaxItems.length}");
+    });
+  }
+
+  Future<void> cityLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/city.json");
+    final data = await json.decode(response);
+    setState(() {
+      _cityItems = data["city"];
+      // ignore: avoid_print
+      print("number of items ${_cityItems.length}");
+    });
+  }
+
+  Future<void> outdoorLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/outdoor.json");
+    final data = await json.decode(response);
+    setState(() {
+      _outdoorItems = data["outdoor"];
+      // ignore: avoid_print
+      print("number of items ${_outdoorItems.length}");
+    });
+  }
+
+  Future<void> romanceLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/romance.json");
+    final data = await json.decode(response);
+    setState(() {
+      _romanceItems = data["romance"];
+      // ignore: avoid_print
+      print("number of items ${_romanceItems.length}");
+    });
+  }
+
+  Future<void> foodLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/food.json");
+    final data = await json.decode(response);
+    setState(() {
+      _foodItems = data["food"];
+      // ignore: avoid_print
+      print("number of items ${_foodItems.length}");
+    });
+  }
+
+  Future<void> beachLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/beach.json");
+    final data = await json.decode(response);
+    setState(() {
+      _beachItems = data["beach"];
+      // ignore: avoid_print
+      print("number of items ${_beachItems.length}");
+    });
+  }
+
+  Future<void> topPropertiesLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/top_properties.json");
+    final data = await json.decode(response);
+    setState(() {
+      _topPropertiesItems = data["topProperties"];
+      // ignore: avoid_print
+      print("number of items ${_topPropertiesItems.length}");
+    });
+  }
+
+  Future<void> homesGuestLoadData() async {
+    final String response =
+        await rootBundle.loadString("assets/json/homes_guest.json");
+    final data = await json.decode(response);
+    setState(() {
+      _homesGuestItems = data["homesGuest"];
+      // ignore: avoid_print
+      print("number of items ${_homesGuestItems.length}");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    bptLoadData();
+    exploreIndiaLoadData();
+    relaxLoadData();
+    cityLoadData();
+    outdoorLoadData();
+    romanceLoadData();
+    foodLoadData();
+    beachLoadData();
+    topPropertiesLoadData();
+    homesGuestLoadData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,325 +321,116 @@ class _MyGalleryState extends State<MyGallery> {
               ),
             ),
           ),
+          const SizedBox(height: 10),
 
-          FutureBuilder(
-            future: DefaultAssetBundle.of(context)
-                .loadString("assets/json/bpt.json"),
-            builder: (context, snapshot) {
-              var mydata = json.decode(snapshot.data.toString());
-              int btnIndex = 0;
+          // void moveLeft() {
+          //   setState(() {
+          //     if (btnIndex > 0) {
+          //       btnIndex--;
+          //     }
+          //   });
+          // }
 
-              // void moveLeft() {
-              //   setState(() {
-              //     if (btnIndex > 0) {
-              //       btnIndex--;
-              //     }
-              //   });
-              // }
+          // void moveRight() {
+          //   setState(() {
+          //     if (btnIndex < mydata["bpt"].length - 1) {
+          //       btnIndex++;
+          //     }
+          //   });
+          // }
 
-              // void moveRight() {
-              //   setState(() {
-              //     if (btnIndex < mydata["bpt"].length - 1) {
-              //       btnIndex++;
-              //     }
-              //   });
-              // }
-
-              return Stack(children: [
+          Stack(
+            children: [
+              if (_bptItems.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 130.0),
                   child: SizedBox(
                     width: 1200,
                     height: 300,
-                    child: ListView(
+                    child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.start,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  mydata["bpt"][btnIndex]["image"],
-                                  // height: 300,
-                                  width: 350,
-                                ),
-                                Text(
-                                  mydata["bpt"][btnIndex]["title"],
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                Text(
-                                  mydata["bpt"][btnIndex]["description"],
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
+                      itemBuilder: (context, index) {
+                        return Column(
                           children: [
                             Image.asset(
-                              mydata["bpt"][btnIndex + 1]["image"],
-                              // height: 300,
-                              width: 350,
+                              _bptItems[index]["image"],
+                              width: 290,
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
-                            Text(
-                              mydata["bpt"][btnIndex + 1]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 1]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 2]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 2]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 2]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // mainAxisAlignment: MainAxisAlignment.start,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 3]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 3]["title"],
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _bptItems[index]["title"],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                             ),
-                            Text(
-                              mydata["bpt"][btnIndex + 3]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _bptItems[index]["description"],
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
                             )
                           ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 4]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 4]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 4]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 5]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 5]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 5]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 6]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 6]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 6]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 7]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 7]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 7]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 8]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 8]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 8]["description"],
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mydata["bpt"][btnIndex + 9]["image"],
-                              // height: 300,
-                              width: 350,
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 9]["title"],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              mydata["bpt"][btnIndex + 9]["description"],
-                            )
-                          ],
-                        ),
-                      ],
+                        );
+                      },
+                      itemCount: _bptItems.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(width: 10);
+                      },
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 110,
-                  top: 100,
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (btnIndex > 0) {
-                          btnIndex -= 1; // Decrement the btnIndex value by 1
-                        }
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white),
-                      child: const Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: Icon(Icons.arrow_back_ios),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: -10,
-                  top: 100,
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (btnIndex < mydata["bpt"].length - 1) {
-                          btnIndex += 1; // Increment the btnIndex value by 1
-                        }
-                      });
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios)),
                   ),
                 )
-              ]);
-            },
+              else
+                //  {loadData();}
+                const Center(child: Icon(Icons.refresh_rounded)),
+              Positioned(
+                left: 110,
+                top: 90,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex > 0) {
+                        btnIndex -= 1; // Decrement the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white),
+                    child: const Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: Icon(Icons.arrow_back_ios),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 0,
+                top: 90,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex < _bptItems.length - 1) {
+                        btnIndex += 1; // Increment the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.arrow_forward_ios)),
+                ),
+              )
+            ],
           ),
 
           Container(
@@ -522,260 +451,91 @@ class _MyGalleryState extends State<MyGallery> {
             ),
           ),
 
-          Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 130.0),
-              child: SizedBox(
-                width: 1200,
-                height: 205,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Column(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/goa.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Goa',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '5,249 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
+          Stack(
+            children: [
+              if (_exploreIndiaItems.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 130.0),
+                  child: SizedBox(
+                    width: 1200,
+                    height: 300,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Image.asset(
+                              _exploreIndiaItems[index]["image"],
+                              width: 190,
+                              height: 150,
+                              fit: BoxFit.cover,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _exploreIndiaItems[index]["title"],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _exploreIndiaItems[index]["description"],
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                      itemCount: _exploreIndiaItems.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(width: 10);
+                      },
                     ),
-                    const SizedBox(
-                      width: 10,
+                  ),
+                )
+              else
+                //  {loadData();}
+                const Center(child: Icon(Icons.refresh_rounded)),
+              Positioned(
+                left: 110,
+                top: 60,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white),
+                    child: const Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: Icon(Icons.arrow_back_ios),
                     ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/delhi1.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'New Delhi',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '2,915 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/rishikesh.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Rishīkesh',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '478 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/mumbai.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Mumbai',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '1,650 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/lonavala.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Lonavala',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '749 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/banglore.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Bangalore',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '2,042 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/Manali.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Manāli',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '871 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/north_goa.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'North Goa',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '3,907 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/Ooty.jpg',
-                          // height: 300,
-                          width: 200,
-                        ),
-                        const Text(
-                          'Ooty',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '470 properties',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 110,
-              top: 65,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                  // width: 25,
-                  // height: 25,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white),
-                  child: const Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              right: -10,
-              top: 65,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white,
-                    ),
-                    child: const Icon(Icons.arrow_forward_ios)),
-              ),
-            )
-          ]),
+              Positioned(
+                right: 0,
+                top: 60,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.arrow_forward_ios)),
+                ),
+              )
+            ],
+          ),
 
           Container(
             margin: const EdgeInsets.only(left: 130, top: 15),
@@ -795,6 +555,7 @@ class _MyGalleryState extends State<MyGallery> {
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ),
+
           // buttons for above
           Container(
             margin: const EdgeInsets.only(left: 130, top: 15),
@@ -948,1586 +709,555 @@ class _MyGalleryState extends State<MyGallery> {
             height: 10,
           ),
           count == 0
-              ?
-              // images for above
-              Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/Yercaud.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Yercaud',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '147 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_relaxItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _relaxItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _relaxItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _relaxItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _relaxItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          const SizedBox(
-                            width: 10,
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/kumarakom.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Kumarakom',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '397 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/panchangi.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Panchgani',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '682 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/lavasa.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Lavasa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '745 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/saputara.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Saputara',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/kalimpong.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Kalimpong',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,933 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/pelling.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Pelling',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/kasauli.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Kasauli',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,993 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/chail.jpg',
-                                // height: 300,
-                                width: 200,
-                              ),
-                              const Text(
-                                'Chail',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '2,001 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
 
           count == 1
-              ? Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Hospet.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Hospet',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '285 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_cityItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _cityItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _cityItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _cityItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _cityItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                    'assets/images/Velankanni.jpg',
-                                    height: 125,
-                                    width: 200,
-                                    fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Velankanni',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '352 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Old Goa.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Old Goa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '486 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                    'assets/images/Chittaurgarh.jpg',
-                                    height: 125,
-                                    width: 200,
-                                    fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Chittaurgarh',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,360 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                    'assets/images/Allahābād.jpg',
-                                    height: 125,
-                                    width: 200,
-                                    fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Allahābād',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 1,456 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Gwalior.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Gwalior',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,471 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Ajmer.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Ajmer',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,531 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Jodhpur.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Jodhpur',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,555 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset('assets/images/Jaipur.jpg',
-                                    height: 125, width: 200, fit: BoxFit.cover),
-                              ),
-                              const Text(
-                                'Jaipur',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,561 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
 
           count == 2
-              ? Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/Yercaud.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Yercaud',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '147 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_outdoorItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _outdoorItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _outdoorItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _outdoorItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _outdoorItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kumarakom.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kumarakom',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '397 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/panchangi.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Panchgani',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '682 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/lavasa.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Lavasa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '745 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/saputara.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Saputara',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kalimpong.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kalimpong',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,933 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/pelling.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Pelling',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kasauli.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kasauli',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,993 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/chail.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Chail',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '2,001 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
 
           count == 3
-              ? Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/Yercaud.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Yercaud',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '147 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_romanceItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _romanceItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _romanceItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _romanceItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _romanceItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kumarakom.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kumarakom',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '397 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/panchangi.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Panchgani',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '682 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/lavasa.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Lavasa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '745 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/saputara.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Saputara',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kalimpong.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kalimpong',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,933 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/pelling.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Pelling',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kasauli.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kasauli',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,993 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/chail.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Chail',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '2,001 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
+
           count == 4
-              ? Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/Coimbatore.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Coimbatore',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '230 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_foodItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _foodItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _foodItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _foodItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _foodItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kumarakom.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kumarakom',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '397 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/panchangi.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Panchgani',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '682 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/lavasa.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Lavasa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '745 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/saputara.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Saputara',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kalimpong.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kalimpong',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,933 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/pelling.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Pelling',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kasauli.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kasauli',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,993 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/chail.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Chail',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '2,001 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
+
           count == 5
-              ? Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130.0),
-                    child: SizedBox(
-                      width: 1200,
-                      height: 205,
-                      child: ListView(
-                        // shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/Yercaud.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Yercaud',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '147 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+              ? Stack(
+                  children: [
+                    if (_beachItems.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130.0),
+                        child: SizedBox(
+                          width: 1200,
+                          height: 300,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    _beachItems[index]["image"],
+                                    width: 190,
+                                    height: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _beachItems[index]["title"],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                    child: Text(
+                                      _beachItems[index]["description"],
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                            itemCount: _beachItems.length,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(width: 10);
+                            },
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kumarakom.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kumarakom',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '397 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
+                        ),
+                      )
+                    else
+                      //  {loadData();}
+                      const Center(child: Icon(Icons.refresh_rounded)),
+                    Positioned(
+                      left: 110,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.arrow_back_ios),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/panchangi.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Panchgani',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '682 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/lavasa.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Lavasa',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '745 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/saputara.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Saputara',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                ' 939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kalimpong.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kalimpong',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,933 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/pelling.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Pelling',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,939 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/kasauli.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Kasauli',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '1,993 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(
-                                    left: 15, top: 15, right: 15, bottom: 20),
-                                child: Image.asset(
-                                  'assets/images/chail.jpg',
-                                  // height: 300,
-                                  width: 200,
-                                ),
-                              ),
-                              const Text(
-                                'Chail',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              const Text(
-                                '2,001 km away',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 110,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        // width: 25,
-                        // height: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Icon(Icons.arrow_back_ios),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: -10,
-                    top: 65,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.black),
-                            color: Colors.white,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios)),
-                    ),
-                  )
-                ])
+                    Positioned(
+                      right: 0,
+                      top: 60,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(color: Colors.black),
+                              color: Colors.white,
+                            ),
+                            child: const Icon(Icons.arrow_forward_ios)),
+                      ),
+                    )
+                  ],
+                )
               : const Center(),
 
           Container(
@@ -2549,220 +1279,136 @@ class _MyGalleryState extends State<MyGallery> {
             ),
           ),
 
-          Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 130.0),
-              child: SizedBox(
-                width: 1200,
-                height: 320,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/La Roulotte de Ciney.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
-                        ),
-                        const Text(
-                          'La Roulotte de Ciney',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Belgium, Ciney',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        // const Text('8.4 Very Good · 92 reviews')
-                        RichText(
-                            text: const TextSpan(
-                                style: TextStyle(
-                                  fontSize: 12,
+          Stack(
+            children: [
+              if (_topPropertiesItems.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 130.0),
+                  child: SizedBox(
+                    width: 1200,
+                    height: 330,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              _topPropertiesItems[index]["image"],
+                              width: 290,
+                              height: 250,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: 290,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                child: Text(
+                                  _topPropertiesItems[index]["title"],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
                                 ),
-                                children: <TextSpan>[
-                              TextSpan(
-                                  text: '8.4',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      backgroundColor: Colors.blue)),
-                              TextSpan(text: ' Very Good'),
-                              TextSpan(
-                                text: '· 92 reviews ',
-                                style: TextStyle(color: Colors.grey),
                               ),
-                            ]))
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Domki Wierszyki Shelters.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
-                        ),
-                        const Text(
-                          'Domki Wierszyki Shelters',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Poland, Zakopane',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        // const Text('9.7Exceptional · 86 reviews'),
-                        RichText(
-                            text: const TextSpan(
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                                children: <TextSpan>[
-                              TextSpan(
-                                  text: '9.7',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      backgroundColor: Colors.blue)),
-                              TextSpan(text: ' Exceptional'),
-                              TextSpan(
-                                text: '· 86 reviews ',
-                                style: TextStyle(color: Colors.grey),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _topPropertiesItems[index]["description"],
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
                               ),
-                            ]))
-                      ],
+                            ),
+                            const SizedBox(
+                              height: 3,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                            text: _topPropertiesItems[index]
+                                                ["id"],
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                backgroundColor: Colors.blue,
+                                                fontSize: 15)),
+                                        TextSpan(
+                                          text: _topPropertiesItems[index]
+                                              ["rating"],
+                                        ),
+                                        TextSpan(
+                                          text: _topPropertiesItems[index]
+                                              ["review"],
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        ),
+                                      ])),
+                            )
+                          ],
+                        );
+                      },
+                      itemCount: _topPropertiesItems.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(width: 10);
+                      },
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Ranczo w Dolinie.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
-                        ),
-                        const Text(
-                          'Ranczo w Dolinie',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Poland, Kiszkowo',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        RichText(
-                            text: const TextSpan(
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                                children: <TextSpan>[
-                              TextSpan(
-                                  text: '9.5',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      backgroundColor: Colors.blue)),
-                              TextSpan(text: ' Exceptional'),
-                              TextSpan(
-                                text: '· 232 reviews ',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ]))
-                      ],
+                  ),
+                )
+              else
+                //  {loadData();}
+                const Center(child: Icon(Icons.refresh_rounded)),
+              Positioned(
+                left: 110,
+                top: 100,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex > 0) {
+                        btnIndex -= 1; // Decrement the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white),
+                    child: const Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: Icon(Icons.arrow_back_ios),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Tiny House Dreischwesternherz.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
-                        ),
-                        const Text(
-                          'Tiny House Dreischwesternherz',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Germany, Trier',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        // const Text('9.6 Exceptional · 145 reviews'),
-                        RichText(
-                            text: const TextSpan(
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                                children: <TextSpan>[
-                              TextSpan(
-                                  text: '9.6',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      backgroundColor: Colors.blue)),
-                              TextSpan(text: ' Exceptional'),
-                              TextSpan(
-                                text: '· 145 reviews ',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ]))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 110,
-              top: 100,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                  // width: 25,
-                  // height: 25,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white),
-                  child: const Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              right: -10,
-              top: 100,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white,
-                    ),
-                    child: const Icon(Icons.arrow_forward_ios)),
-              ),
-            )
-          ]),
+              Positioned(
+                right: 0,
+                top: 100,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex < _topPropertiesItems.length - 1) {
+                        btnIndex += 1; // Increment the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.arrow_forward_ios)),
+                ),
+              )
+            ],
+          ),
 
           Container(
             margin: const EdgeInsets.only(left: 130, top: 15),
@@ -2977,6 +1623,7 @@ class _MyGalleryState extends State<MyGallery> {
               ),
             )
           ]),
+
           Container(
             margin: const EdgeInsets.only(left: 130, top: 15),
             child: const Text(
@@ -2988,335 +1635,162 @@ class _MyGalleryState extends State<MyGallery> {
             ),
           ),
 
-          Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 130.0),
-              child: SizedBox(
-                width: 1200,
-                height: 420,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Aparthotel Stare Miasto.webp',
-                            height: 220,
-                            width: 350,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        const Text(
-                          'Aparthotel Stare Miasto',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Old Town, Poland, Kraków',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        // const Text('8.4 Very Good · 92 reviews')
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+          Stack(
+            children: [
+              if (_homesGuestItems.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 130.0),
+                  child: SizedBox(
+                    width: 1200,
+                    height: 350,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' Starting from ',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.grey),
-                                    ),
-                                    TextSpan(
-                                      text: '₹ 9,651',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ]),
+                            Image.asset(
+                              _homesGuestItems[index]["image"],
+                              width: 290,
+                              height: 250,
+                              fit: BoxFit.cover,
                             ),
-                            RichText(
-                                text: const TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                    children: <TextSpan>[
-                                  TextSpan(
-                                      text: '9.7',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          backgroundColor: Colors.blue)),
-                                  TextSpan(text: ' Exceptional'),
-                                  TextSpan(
-                                    text: '· 86 reviews ',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ]))
-                          ],
-                        )
-
-                        // SizedBox(
-                        //   width:150,
-                        //   child:
-                        //     Text('data'),
-
-                        // )
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/7Seasons Apartments Budapest.webp',
-                            height: 220,
-                            width: 350,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        const Text(
-                          '7Seasons Apartments Budapest',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          '06. Terézváros, Hungary, Budapest',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-
-                        // const Text('9.7Exceptional · 86 reviews'),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' Starting from ',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.grey),
-                                    ),
-                                    TextSpan(
-                                      text: '₹ 13,911',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ]),
+                            SizedBox(
+                              width: 290,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                                child: Text(
+                                  _homesGuestItems[index]["title"],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                              ),
                             ),
-                            RichText(
-                                text: const TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                    children: <TextSpan>[
-                                  TextSpan(
-                                      text: '9.7',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          backgroundColor: Colors.blue)),
-                                  TextSpan(text: ' Exceptional'),
-                                  TextSpan(
-                                    text: '· 86 reviews ',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ]))
-                          ],
-                        )
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/3 Epoques Apartments by Prague Residences.webp',
-                            height: 220,
-                            width: 350,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        const Text(
-                          '3 Epoques Apartments by Prague Residences',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Prague 1, Czech Republic, Praha 1',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' Starting from ',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.grey),
-                                    ),
-                                    TextSpan(
-                                      text: '₹ 13,552',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ]),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Text(
+                                _homesGuestItems[index]["description"],
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
                             ),
-                            RichText(
-                                text: const TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                    children: <TextSpan>[
-                                  TextSpan(
-                                      text: '9.7',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          backgroundColor: Colors.blue)),
-                                  TextSpan(text: ' Exceptional'),
-                                  TextSpan(
-                                    text: '· 86 reviews ',
-                                    style: TextStyle(color: Colors.grey),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                              text: _homesGuestItems[index]
+                                                  ["text"],
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.grey),
+                                            ),
+                                            TextSpan(
+                                              text: _homesGuestItems[index]
+                                                  ["amount"],
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ])),
+                                  const SizedBox(
+                                    height: 3,
                                   ),
-                                ]))
+                                  RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                                text: _homesGuestItems[index]
+                                                    ["id"],
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    backgroundColor:
+                                                        Colors.blue)),
+                                            TextSpan(
+                                              text: _homesGuestItems[index]
+                                                  ["rating"],
+                                            ),
+                                            TextSpan(
+                                              text: _homesGuestItems[index]
+                                                  ["review"],
+                                              style: const TextStyle(
+                                                  color: Colors.grey),
+                                            ),
+                                          ])),
+                                ],
+                              ),
+                            )
                           ],
-                        )
-
-                        // TextSpan(
-                        //             text: '9.5',
-                        //             style: TextStyle(
-                        //                 color: Colors.white,
-                        //                 backgroundColor: Colors.blue)),
-                        //         TextSpan(text: ' Exceptional'),
-                        //         TextSpan(
-                        //           text: '· 232 reviews ',
-                        //           style: TextStyle(color: Colors.grey),
-                        //         ),
-                      ],
+                        );
+                      },
+                      itemCount: _homesGuestItems.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(width: 10);
+                      },
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/6 Continents Apartments by Prague Residences.webp',
-                            height: 220,
-                            width: 350,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        const Text(
-                          '6 Continents Apartments by Prague Residences',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'Prague 1, Czech Republic, Prague',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        // const Text('9.6 Exceptional · 145 reviews'),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' Starting from ',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.grey),
-                                    ),
-                                    TextSpan(
-                                      text: '₹ 11,024',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ]),
-                            ),
-                            RichText(
-                                text: const TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                    children: <TextSpan>[
-                                  TextSpan(
-                                      text: '9.7',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          backgroundColor: Colors.blue)),
-                                  TextSpan(text: ' Exceptional'),
-                                  TextSpan(
-                                    text: '· 86 reviews ',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ]))
-                          ],
-                        )
-                      ],
+                  ),
+                )
+              else
+                //  {loadData();}
+                const Center(child: Icon(Icons.refresh_rounded)),
+              Positioned(
+                left: 110,
+                top: 100,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex > 0) {
+                        btnIndex -= 1; // Decrement the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white),
+                    child: const Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: Icon(Icons.arrow_back_ios),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 110,
-              top: 100,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                  // width: 25,
-                  // height: 25,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white),
-                  child: const Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              right: -10,
-              top: 100,
-              child: InkWell(
-                onTap: () {
-                  setState(() {});
-                },
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white,
-                    ),
-                    child: const Icon(Icons.arrow_forward_ios)),
-              ),
-            )
-          ]),
+              Positioned(
+                right: 0,
+                top: 100,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (btnIndex < _homesGuestItems.length - 1) {
+                        btnIndex += 1; // Increment the btnIndex value by 1
+                      }
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.arrow_forward_ios)),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );

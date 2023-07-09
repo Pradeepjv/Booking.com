@@ -1,0 +1,53 @@
+{
+    "city":[
+        {
+            "index":0,
+            "image":"assets/images/Hospet.jpg",
+            "title":"Hospet",
+            "description":"285 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Velankanni.jpg",
+            "title":"Velankanni",
+            "description":"352 km away"
+        },{
+            "index":2,
+            "image":"assets/images/Old Goa.jpg",
+            "title":"Old Goa",
+            "description":"486 km away"
+        },{
+            "index":3,
+            "image":"assets/images/Chittaurgarh.jpg",
+            "title":"Chittaurgarh",
+            "description":"1,360 km away"
+        },{
+            "index":4,
+            "image":"assets/images/Allahabad.jpg",
+            "title":"Allahābād",
+            "description":"1,456 km away"
+        },{
+            "index":5,
+            "image":"assets/images/Gwalior.jpg",
+            "title":"Gwalior",
+            "description":"1,471 km away"
+        },{
+            "index":6,
+            "image":"assets/images/Ajmer.jpg",
+            "title":"Ajmer",
+            "description":"1,531 km away"
+        },{
+            "index":7,
+            "image":"assets/images/Jodhpur.jpg",
+            "title":"Jodhpur",
+            "description":"1,555 km away"
+        },{
+            "index":8,
+            "image":"assets/images/Jaipur.jpg",
+            "title":"Jaipur",
+            "description":"1,561 km away"
+        }
+        
+
+    ]
+}

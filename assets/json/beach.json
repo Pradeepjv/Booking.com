@@ -1,0 +1,83 @@
+{
+    "beach":[
+        {
+            "index":0,
+            "image":"assets/images/Kannur.jpg",
+            "title":"Kannur",
+            "description":"271 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Cherai Beach.jpg",
+            "title":"Cherai Beach",
+            "description":"352 km away"
+        },{
+            "index":2,
+            "image":"assets/images/Agonda.jpg",
+            "title":"Agonda",
+            "description":"453 km away"
+        },{
+            "index":3,
+            "image":"assets/images/Colva.jpg",
+            "title":"Colva",
+            "description":"472 km away"
+        },{
+            "index":4,
+            "image":"assets/images/Varkala.jpg",
+            "title":"Varkala",
+            "description":"481 km away"
+        },{
+            "index":5,
+            "image":"assets/images/Calangute.jpg",
+            "title":"Calangute",
+            "description":"502 km away"
+        },{
+            "index":6,
+            "image":"assets/images/Kovalam.jpg",
+            "title":"Kovalam",
+            "description":"513 km away"
+        },{
+            "index":7,
+            "image":"assets/images/Arambol.jpg",
+            "title":"Arambol",
+            "description":"518 km away"
+        },{
+            "index":8,
+            "image":"assets/images/Dapoli.jpg",
+            "title":"Dapoli",
+            "description":"712 km away"
+        },{
+            "index":9,
+            "image":"assets/images/Diveagar.jpg",
+            "title":"Diveagar",
+            "description":"759 km away"
+        },{
+            "index":10,
+            "image":"assets/images/Visakhapatnam.jpg",
+            "title":"Visakhapatnam",
+            "description":"807 km away"
+        },{
+            "index":11,
+            "image":"assets/images/Puri.jpg",
+            "title":"Puri",
+            "description":"1,159 km away"
+        },{
+            "index":12,
+            "image":"assets/images/Mandarmoni.jpg",
+            "title":"Mandarmoni",
+            "description":"1,442 km away"
+        },{
+            "index":13,
+            "image":"assets/images/Port Blair.jpg",
+            "title":"Port Blair",
+            "description":"1,650 km away"
+        },{
+            "index":14,
+            "image":"assets/images/Havelock Island.jpg",
+            "title":"Havelock Island",
+            "description":"1,667 km away"
+        }
+        
+
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "outdoor":[
+        {
+            "index":0,
+            "image":"assets/images/Chikmagalūr.jpg",
+            "title":"Chikmagalūr",
+            "description":"200 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Kalpetta.jpg",
+            "title":"Kalpetta",
+            "description":"223 km away"
+        },{
+            "index":2,
+            "image":"assets/images/Vythiri.jpg",
+            "title":"Vythiri",
+            "description":"231 km away"
+        },{
+            "index":3,
+            "image":"assets/images/Rishīkesh.jpg",
+            "title":"Rishīkesh",
+            "description":"1,903 km away"
+        },{
+            "index":4,
+            "image":"assets/images/Pelling.jpg",
+            "title":"Pelling",
+            "description":"1,939 km away"
+        },{
+            "index":5,
+            "image":"assets/images/Gangtok.jpg",
+            "title":"Gangtok",
+            "description":"1,964 km away"
+        },{
+            "index":6,
+            "image":"assets/images/chail.jpg",
+            "title":"Chail",
+            "description":"2,001 km away"
+        },{
+            "index":7,
+            "image":"assets/images/Cherrapunji.jpg",
+            "title":"Cherrapunji",
+            "description":"2,014 km away"
+        },{
+            "index":8,
+            "image":"assets/images/manali.jpg",
+            "title":" Manāli",
+            "description":"2,142 km away"
+        },{
+            "index":9,
+            "image":"assets/images/McLeod Ganj.jpg",
+            "title":"McLeod Ganj",
+            "description":"2,147 km away"
+        },{
+            "index":10,
+            "image":"assets/images/Pahalgām.jpg",
+            "title":"Pahalgām",
+            "description":"2,353 km away"
+        },{
+            "index":10,
+            "image":"assets/images/Leh.jpg",
+            "title":"Leh",
+            "description":"2,355 km away"
+        }
+        
+
+    ]
+}
