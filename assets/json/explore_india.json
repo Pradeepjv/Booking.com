@@ -1,0 +1,53 @@
+{
+    "exploreIndia":[
+        {
+            "index":0,
+            "image":"assets/images/goa.jpg",
+            "title":"Goa",
+            "description":"5,249 properties"
+        },
+        {
+            "index":1,
+            "image":"assets/images/delhi1.jpg",
+            "title":"New Delhi",
+            "description":"2,915 properties"
+        },{
+            "index":2,
+            "image":"assets/images/rishikesh.jpg",
+            "title":"Rishīkesh",
+            "description":"478 properties"
+        },{
+            "index":3,
+            "image":"assets/images/mumbai.jpg",
+            "title":"Mumbai",
+            "description":"1,650 properties"
+        },{
+            "index":4,
+            "image":"assets/images/lonavala.jpg",
+            "title":"Lonavala",
+            "description":"749 properties"
+        },{
+            "index":5,
+            "image":"assets/images/banglore.jpg",
+            "title":"Banglore",
+            "description":"2,042 properties"
+        },{
+            "index":6,
+            "image":"assets/images/Manali.jpg",
+            "title":"Manali",
+            "description":"871 properties"
+        },{
+            "index":7,
+            "image":"assets/images/north_goa.jpg",
+            "title":" North Goa",
+            "description":"3,907 properties"
+        },{
+            "index":8,
+            "image":"assets/images/Ooty.jpg",
+            "title":"Vacation Ooty",
+            "description":"470 properties"
+        }
+        
+
+    ]
+}

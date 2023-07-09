@@ -1,0 +1,73 @@
+{
+    "food":[
+        {
+            "index":0,
+            "image":"assets/images/Coimbatore.jpg",
+            "title":"Coimbatore",
+            "description":"230 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Chennai.jpg",
+            "title":"Chennai",
+            "description":"285 km away"
+        },{
+            "index":2,
+            "image":"assets/images/Mapusa.jpg",
+            "title":"Mapusa",
+            "description":"501 km away"
+        },{
+            "index":3,
+            "image":"assets/images/Mumbai.jpg",
+            "title":"Mumbai",
+            "description":"839 km away"
+        },{
+            "index":4,
+            "image":"assets/images/Nagpur.jpg",
+            "title":"Nagpur",
+            "description":"922 km away"
+        },{
+            "index":5,
+            "image":"assets/images/Surat.jpg",
+            "title":"Surat",
+            "description":"1,042  km away"
+        },{
+            "index":6,
+            "image":"assets/images/Indore.jpg",
+            "title":"Indore",
+            "description":"1,098 km away"
+        },{
+            "index":7,
+            "image":"assets/images/Somnath.jpg",
+            "title":"Somnath",
+            "description":"1,168  km away"
+        },{
+            "index":8,
+            "image":"assets/images/Ahmedabad.jpg",
+            "title":"Ahmedabad",
+            "description":"1,236 km away"
+        },{
+            "index":9,
+            "image":"assets/images/Rajkot.jpg",
+            "title":"Rajkot",
+            "description":"1,236 km away"
+        },{
+            "index":10,
+            "image":"assets/images/Kolkata.jpg",
+            "title":"Kolkata",
+            "description":"1,560 km away"
+        },{
+            "index":11,
+            "image":"assets/images/Noida.jpg",
+            "title":"Noida",
+            "description":"1,730 km away"
+        },{
+            "index":12,
+            "image":"assets/images/delhi.jpg",
+            "title":"Delhi",
+            "description":"1,236 km away"
+        }
+        
+
+    ]
+}

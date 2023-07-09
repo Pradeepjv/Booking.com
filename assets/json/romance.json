@@ -1,0 +1,78 @@
+{
+    "romance":[
+        {
+            "index":0,
+            "image":"assets/images/banglore.jpg",
+            "title":"Bangalore",
+            "description":"0 km away"
+        },
+        {
+            "index":1,
+            "image":"assets/images/Kozhikode.jpg",
+            "title":"Kozhikode",
+            "description":"276 km away"
+        },{
+            "index":2,
+            "image":"assets/images/Manipal.jpg",
+            "title":"Resorts",
+            "description":"307 km away"
+        },{
+            "index":3,
+            "image":"assets/images/Ernakulam.jpg",
+            "title":"Ernakulam",
+            "description":"361 km away"
+        },{
+            "index":4,
+            "image":"assets/images/Madgaon.jpg",
+            "title":"Madgaon",
+            "description":"470 km away"
+        },{
+            "index":5,
+            "image":"assets/images/Vasco Da Gama.jpg",
+            "title":"Vasco Da Gama",
+            "description":"487 km away"
+        },{
+            "index":6,
+            "image":"assets/images/Pune.jpg",
+            "title":"Pune",
+            "description":"735 km away"
+        },{
+            "index":7,
+            "image":"assets/images/Navi Mumbai.jpg",
+            "title":"Navi Mumbai",
+            "description":"830 km away"
+        },{
+            "index":8,
+            "image":"assets/images/Thane.jpg",
+            "title":"Thane",
+            "description":"850 km away"
+        },{
+            "index":9,
+            "image":"assets/images/Vadodara.jpg",
+            "title":"Vadodara",
+            "description":"1,136 km away"
+        },{
+            "index":10,
+            "image":"assets/images/Neemrana.jpg",
+            "title":"Neemrana",
+            "description":"1,674 km away"
+        },{
+            "index":11,
+            "image":"assets/images/Gurgaon.jpg",
+            "title":"Gurgaon",
+            "description":"1,723 km away"
+        },{
+            "index":12,
+            "image":"assets/images/Chandīgarh.jpg",
+            "title":"Chandīgarh",
+            "description":"1,976 km away"
+        },{
+            "index":13,
+            "image":"assets/images/Ludhiana.jpg",
+            "title":"Ludhiana",
+            "description":"2,002 km away"
+        } 
+        
+
+    ]
+}
