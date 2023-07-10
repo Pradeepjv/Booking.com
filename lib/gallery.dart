@@ -31,7 +31,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _bptItems = data["bpt"];
       // ignore: avoid_print
-      print("number of items ${_bptItems.length}");
+      // print("number of items ${_bptItems.length}");
     });
   }
 
@@ -42,7 +42,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _exploreIndiaItems = data["exploreIndia"];
       // ignore: avoid_print
-      print("number of items ${_exploreIndiaItems.length}");
+      // print("number of items ${_exploreIndiaItems.length}");
     });
   }
 
@@ -53,7 +53,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _relaxItems = data["relax"];
       // ignore: avoid_print
-      print("number of items ${_relaxItems.length}");
+      // print("number of items ${_relaxItems.length}");
     });
   }
 
@@ -64,7 +64,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _cityItems = data["city"];
       // ignore: avoid_print
-      print("number of items ${_cityItems.length}");
+      // print("number of items ${_cityItems.length}");
     });
   }
 
@@ -75,7 +75,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _outdoorItems = data["outdoor"];
       // ignore: avoid_print
-      print("number of items ${_outdoorItems.length}");
+      // print("number of items ${_outdoorItems.length}");
     });
   }
 
@@ -86,7 +86,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _romanceItems = data["romance"];
       // ignore: avoid_print
-      print("number of items ${_romanceItems.length}");
+      // print("number of items ${_romanceItems.length}");
     });
   }
 
@@ -97,7 +97,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _foodItems = data["food"];
       // ignore: avoid_print
-      print("number of items ${_foodItems.length}");
+      // print("number of items ${_foodItems.length}");
     });
   }
 
@@ -108,7 +108,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _beachItems = data["beach"];
       // ignore: avoid_print
-      print("number of items ${_beachItems.length}");
+      // print("number of items ${_beachItems.length}");
     });
   }
 
@@ -119,7 +119,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _topPropertiesItems = data["topProperties"];
       // ignore: avoid_print
-      print("number of items ${_topPropertiesItems.length}");
+      // print("number of items ${_topPropertiesItems.length}");
     });
   }
 
@@ -130,7 +130,7 @@ class _MyGalleryState extends State<MyGallery> {
     setState(() {
       _homesGuestItems = data["homesGuest"];
       // ignore: avoid_print
-      print("number of items ${_homesGuestItems.length}");
+      // print("number of items ${_homesGuestItems.length}");
     });
   }
 
@@ -1286,7 +1286,7 @@ class _MyGalleryState extends State<MyGallery> {
                   padding: const EdgeInsets.only(left: 130.0),
                   child: SizedBox(
                     width: 1200,
-                    height: 330,
+                    height: 340,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -1420,6 +1420,7 @@ class _MyGalleryState extends State<MyGallery> {
               ),
             ),
           ),
+          const SizedBox(height: 10),
 
           Stack(children: [
             Padding(
@@ -1431,14 +1432,9 @@ class _MyGalleryState extends State<MyGallery> {
                   scrollDirection: Axis.horizontal,
                   children: [
                     Stack(children: [
-                      Container(
-                        margin: const EdgeInsets.only(
-                          top: 15,
-                        ),
-                        width: 525,
-                        child: Image.asset(
-                            'assets/images/Tiny House Dreischwesternherz.jpg'),
-                      ),
+                      Image.asset(
+                          'assets/images/Tiny House Dreischwesternherz.jpg',
+                          width: 592),
                       const Positioned(
                         left: 120,
                         bottom: 70,
@@ -1462,20 +1458,19 @@ class _MyGalleryState extends State<MyGallery> {
                         ),
                       ),
                     ]),
+                    const SizedBox(width: 10),
                     Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 60, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/La Roulotte de Ciney.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
+                        Image.asset(
+                          'assets/images/La Roulotte de Ciney.jpg',
+                          width: 290,
+                          height: 250,
+                          fit: BoxFit.cover,
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             'Europe’s finest and most scenic train rides',
                             style: TextStyle(
@@ -1483,7 +1478,7 @@ class _MyGalleryState extends State<MyGallery> {
                           ),
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             'From the snow-capped Alps to the vast blue fjords of Norway.',
                             style: TextStyle(fontSize: 14, color: Colors.grey),
@@ -1492,20 +1487,19 @@ class _MyGalleryState extends State<MyGallery> {
                         // const Text('8.4 Very Good · 92 reviews')
                       ],
                     ),
+                    const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Domki Wierszyki Shelters.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
+                        Image.asset(
+                          'assets/images/Domki Wierszyki Shelters.jpg',
+                          width: 290,
+                          height: 250,
+                          fit: BoxFit.cover,
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             '6 best summer music festivals in South Korea',
                             style: TextStyle(
@@ -1513,7 +1507,7 @@ class _MyGalleryState extends State<MyGallery> {
                           ),
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             'From dancing to K-hip-hop in Seoul to a classical music festival in the mountains.',
                             style: TextStyle(fontSize: 14, color: Colors.grey),
@@ -1522,20 +1516,19 @@ class _MyGalleryState extends State<MyGallery> {
                         // const Text('9.7Exceptional · 86 reviews'),
                       ],
                     ),
+                    const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Ranczo w Dolinie.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
+                        Image.asset(
+                          'assets/images/Ranczo w Dolinie.jpg',
+                          width: 290,
+                          height: 250,
+                          fit: BoxFit.cover,
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             '5 city trips for cyclists',
                             style: TextStyle(
@@ -1543,7 +1536,7 @@ class _MyGalleryState extends State<MyGallery> {
                           ),
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             'The best cities around the world to discover on two wheels.',
                             style: TextStyle(fontSize: 14, color: Colors.grey),
@@ -1551,20 +1544,19 @@ class _MyGalleryState extends State<MyGallery> {
                         ),
                       ],
                     ),
+                    const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 15, top: 15, right: 15, bottom: 20),
-                          child: Image.asset(
-                            'assets/images/Tiny House Dreischwesternherz.jpg',
-                            // height: 300,
-                            width: 350,
-                          ),
+                        Image.asset(
+                          'assets/images/Tiny House Dreischwesternherz.jpg',
+                          width: 290,
+                          height: 250,
+                          fit: BoxFit.cover,
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             '6 inspiring sabbaticals in the Asia-Pacific region',
                             style: TextStyle(
@@ -1572,7 +1564,7 @@ class _MyGalleryState extends State<MyGallery> {
                           ),
                         ),
                         const SizedBox(
-                          width: 200,
+                          width: 290,
                           child: Text(
                             'From a mindful stay in a Japanese temple to a cooking class in Vietnam.',
                             style: TextStyle(fontSize: 14, color: Colors.grey),
@@ -1607,7 +1599,7 @@ class _MyGalleryState extends State<MyGallery> {
               ),
             ),
             Positioned(
-              right: -10,
+              right: 0,
               top: 150,
               child: InkWell(
                 onTap: () {
